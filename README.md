@@ -17,4 +17,3 @@
  
 # Images
 ![alt text](https://samistorage.blob.core.windows.net/images/dash.JPG)
-Format: ![Alt Text](url)
