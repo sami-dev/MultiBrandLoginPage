@@ -17,3 +17,11 @@
  
 # Images
 ![alt text](https://samistorage.blob.core.windows.net/images/dash.JPG)
+
+# Table
+
+| No |      Text     | Value |
+|----|:-------------:|------:|
+| 1  |  left-aligned | $1600 |
+| 2  |    centered   |   $12 |
+| 3  | right-aligned |    $1 |
