@@ -33,7 +33,7 @@ software and services below:
     This isn't required. You can run sample applications from your computer. However, you need to host login pages on a public-facing Website. Azure is the easiest place to do that.
 
 # Build and Deploy MVC Web Applications<a id="sec-3" name="sec-3"></a>
-Deployment Instructions for Web Applications - TODO
+TODO - Deployment Instructions for Web Applications
 
 # Setting up Okta's Sandbox<a id="sec-4" name="sec-4"></a>
 
@@ -65,3 +65,7 @@ Okta allows you to create custom OAuth 2.0 authorization servers. Create a new c
 5.  Access Policies:
 
 	By default, there is no access policies. We will add access policies for our sample application later.
+
+
+# Run and Test Web Applications<a id="sec-5" name="sec-5"></a>
+TODO - Run and Test Web Applications
