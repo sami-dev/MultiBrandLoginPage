@@ -43,7 +43,7 @@ TODO - Deployment Instructions for Web Applications
 4. Create Groups
 5. Configure OpenID Connect and SAML2 applications
 
-##Step 1. Create a Custom Authorization Server##
+## Step 1. Create a Custom Authorization Server ##
 
 Okta allows you to create custom OAuth 2.0 authorization servers. Create a new custom authorization server for this application.
 
