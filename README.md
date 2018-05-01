@@ -20,8 +20,8 @@
 
 # Table
 
-| No |      Text     | Value |
-|----|:-------------:|------:|
-| 1  |  left-aligned | $1600 |
-| 2  |    centered   |   $12 |
-| 3  | right-aligned |    $1 |
+| No |      Text     | Value | Image |
+|----|:-------------:|------:| ----- |
+| 1  |  left-aligned | $1600 | ![alt text](https://samistorage.blob.core.windows.net/images/dash.JPG) |
+| 2  |    centered   |   $12 | ![alt text](https://samistorage.blob.core.windows.net/images/dash.JPG) |
+| 3  | right-aligned |    $1 | ![alt text](https://samistorage.blob.core.windows.net/images/dash.JPG) |
