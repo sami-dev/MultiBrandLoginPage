@@ -25,7 +25,7 @@ software and services below:
 	<br/>
 
 2.  Sign up for [Okta Developer Edition](http://developer.okta.com/).    
-    You'll need an Okta *organization* of your own to use as you follow this gude. After activating your account, log in to it. If you just created an account, you'll see a screen similar to the one below. Click on **< > Developer Console** in the top-left corner and switch to the Classic UI.
+    You'll need an Okta *organization* of your own to use as you follow this guide. After activating your account, log in to it. If you just created an account, you'll see a screen similar to the one below. Click on **< > Developer Console** in the top-left corner and switch to the Classic UI.
     
     <img src="Documentation/Images/okta-classic-ui.png" alt="Okta Dev Console" width="800"/> 
 	<br/>
@@ -43,10 +43,11 @@ TODO - Deployment Instructions for Web Applications
 # D. Setting up Okta's Preview Sandbox<a id="sec-4" name="sec-4"></a>
 
 1. Create a Custom Authorization Server
-2. Configure Identity Providers (Login Pages)
-3. Add User Accounts (People)
-4. Create Groups
-5. Configure OpenID Connect and SAML2 applications
+2. Create Identity Providers for Each Branded Login Page
+3. Enabling CORS (Trusted Origins)
+4. Create Test User Accounts for Each Brand (Add Person)
+5. Create Groups
+6. Add OpenID Connect and SAML 2.0 Applications
 
 ## Step 1. Create a Custom Authorization Server ##
 
@@ -71,7 +72,7 @@ Okta allows you to create custom OAuth 2.0 authorization servers. Create a new c
 
 	By default, there is no access policies. We will add access policies for our sample application later.
 
-## Step 2. Create Identity Providers for each brand ##
+## Step 2. Create Identity Providers for Each Branded Login Page ##
 
 Okta allows you to create Identity Providers to manage federations with external Identity Providers (IdP). Each identity provider (IdP) requires some setup. For this application, we will create an Identity Provider for each branded login page.
 
@@ -163,7 +164,7 @@ In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your w
 	<img src="Documentation/Images/Cors-003.png" alt="Add CORS"/>
 	<br/>
 
-## Step 4. Create Test Accounts (Add Person) ##
+## Step 4. Create Test User Accounts for Each Brand (Add Person) ##
 Now, we will add two test accounts in Okta. Use the People page to add test users.
 
 Go to **Directory → People**
