@@ -2,19 +2,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. Introduction</a></li>
-<li><a href="#sec-2">2. Prerequisites</a></li>
-<li><a href="#sec-3">3. Build MVC Web Applications</a></li>
-<li><a href="#sec-4">4. Setting up Okta's Preview Sandbox</a></li>
-<li><a href="#sec-5">5. Configure, Deploy and Run Web Applications</a></li>
+<li><a href="#sec-1">A. Introduction</a></li>
+<li><a href="#sec-2">B. Prerequisites</a></li>
+<li><a href="#sec-3">C. Build MVC Web Applications</a></li>
+<li><a href="#sec-4">D. Setting up Okta's Preview Sandbox</a></li>
+<li><a href="#sec-5">E. Configure, Deploy and Run Web Applications</a></li>
 </ul>
 </div>
 </div>
 
-# Introduction<a id="sec-1" name="sec-1"></a>
+# A. Introduction<a id="sec-1" name="sec-1"></a>
 **TODO**
 
-# Prerequisites<a id="sec-2" name="sec-2"></a>
+# B. Prerequisites<a id="sec-2" name="sec-2"></a>
 Before you get started, you'll need to install or set up the
 software and services below:
 
@@ -34,13 +34,13 @@ software and services below:
     
     This step is not required. You can run sample applications from your computer. However, if you want to host Branded Login pages and Web applications on a public-facing Website then Azure is the easiest place to do that.
 	<br/>
-	<img src="Documentation/Images/Azure-001.png" alt="Microsoft Azure Free" width="800"/> 
+	<img src="Documentation/Images/Azure-001.PNG" alt="Microsoft Azure Free" width="800"/> 
 	<br/>
 
-# Build MVC Web Applications<a id="sec-3" name="sec-3"></a>
+# C. Build MVC Web Applications<a id="sec-3" name="sec-3"></a>
 TODO - Deployment Instructions for Web Applications
 
-# Setting up Okta's Preview Sandbox<a id="sec-4" name="sec-4"></a>
+# D. Setting up Okta's Preview Sandbox<a id="sec-4" name="sec-4"></a>
 
 1. Create a Custom Authorization Server
 2. Configure Identity Providers (Login Pages)
@@ -249,5 +249,5 @@ Create a group for Blue Brand users.
 #### 6.2.2 Add SAML 2.0 Green Brand Application ####
 #### 6.2.3 Add SAML 2.0 Blue Brand Application ####
 
-# Configure, Deploy and Run Web Applications<a id="sec-5" name="sec-5"></a>
+# E. Configure, Deploy and Run Web Applications<a id="sec-5" name="sec-5"></a>
 TODO - Run and Test Web Applications
