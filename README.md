@@ -330,9 +330,241 @@ Lets first add OpenID connect branded Web Application.
 	<img src="Documentation/Images/App-013.png" alt="Add Application"/>
 	<br/>
 ### 6.2 Add OpenID Connect Client Proxy Application for SAML2 Applications ###
-### 6.3 Add SAML 2.0 Branded Applications ###
-#### 6.3.1 Configure SAML 2.0 Green Brand Application ####
-#### 6.3.2 Configure SAML 2.0 Blue Brand Application ####
+Now, we will configure an OpenID Connect Client Proxy Application. This will be used as proxy for redirecting user to branded login page (for all SAML applications).
+
+- Click on **Add Application** button
+	<br/>
+	<img src="Documentation/Images/App-001.png" alt="Add Application"/>
+	<br/>	
+- Click on **Create New App** button
+	<br/>
+	<img src="Documentation/Images/App-002.png" alt="Add Application"/>
+	<br/>
+- New Application Integration
+	
+	* Platform: Web
+	* Sign on Method: OpenID Connect
+	<br/>
+	<img src="Documentation/Images/App-003.png" alt="Add Application"/>
+	<br/>
+ 
+- Provide Application Name and Logo
+
+	* Application Name: SAML2 Custom Login Page OIDC Client
+	* Application Logo: Optional
+
+	* Provide Login Redirect URIs:
+		* For Example: Green Brand Application SingIn Link
+		https://oktane2018saml2.azurewebsites.net/SignIn/Link?Brand=GREEN
+		* For Example: Blue Brand Application SingIn Link
+		https://oktane2018saml2.azurewebsites.net/SignIn/Link?Brand=BLUE
+	<br/>
+	<img src="Documentation/Images/App-014.png" alt="Add Application"/>
+	<br/>
+	* Allowed Grant Type: [checked]Authorization Code
+	<br/>
+	<img src="Documentation/Images/App-015.png" alt="Add Application"/>
+	<br/>
+	<br/>
+	<img src="Documentation/Images/App-016.png" alt="Add Application"/>
+	<br/>
+	* Assign this application to Everyone group. Because this application will be a common Proxy application for all SAML applications
+	<br/>
+	<img src="Documentation/Images/App-017.png" alt="Add Application"/>
+	<br/> 
+
+### 6.3 Configure SAML 2.0 Green Brand Application ###
+For SAML branded application, we will have to create separate configuration for each brand. Now, we will add SAML 2.0 Green Brand application.
+
+- Click on **Add Application** button
+	<br/>
+	<img src="Documentation/Images/App-001.png" alt="Add Application"/>
+	<br/>	
+- Click on **Create New App** button
+	<br/>
+	<img src="Documentation/Images/App-002.png" alt="Add Application"/>
+	<br/>
+- New Application Integration
+	
+	* Platform: Web
+	* Sign on Method: SAML 2.0
+	<br/>
+	<img src="Documentation/Images/App-018.png" alt="Add Application"/>
+	<br/> 
+- SAML Integration
+	* Provide App Name: SAML2 Green WebApp
+	<br/>
+	<img src="Documentation/Images/App-019.png" alt="Add Application"/>
+	<br/>
+
+- SAML Setting
+	* Single Sign On URL: Provide Sign On URL e.g. https://oktane2018saml2.azurewebsites.net/Saml2/Acs
+	* Recipient URL: Same as Sign On URL
+	* Destination URL: Same as Sign On URL
+	* Audience Restriction: e.g. https://www.oktane2018.com/okta.clients.SAML2
+	* Name ID Format: Unspecified
+	* Response: Signed
+	* Assertion Signature: Signed
+	<br/>
+	<img src="Documentation/Images/App-020.png" alt="Add Application"/>
+	<br/>
+- SAML Logout Setting: click on Show Advance Settings and Provide Single Logout URL and Certificate
+	* SAML Single Logout: Enabled 
+	* Signle Logout URL: e.g. https://oktane2018saml2.azurewebsites.net/
+	* SP Issuer: Provide issuer e.g. https://www.oktane2018.com/okta.clients.SAML2
+	* Signature Certificate: Upload certificate file
+	<br/>
+	<img src="Documentation/Images/App-021.png" alt="Add Application"/>
+	<br/>
+- SAML Attributes: Provide attributes that will be available in SAML response
+	* uid
+		* Name: uid
+		* Name format: Unspecified
+		* Value: user.id
+	* orgid
+		* Name: orgid
+		* Name format: Basic
+		* Value: value of OrgId e.g. 00oen1q08omzCcwsC0h7
+	* brand
+		* Name: brand
+		* Name format: Basic
+		* Value: GREEN
+	* name
+		* Name: name
+		* Name format: Unspecified
+		* Value: user.displayName
+	* firstName
+		* Name: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+		* Name format: Unspecified
+		* Value: user.firstName
+	* lastName
+		* Name: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname
+		* Name format: Unspecified
+		* Value: user.lastName
+	* login
+		* Name: login
+		* Name format: Unspecified
+		* Value: user.login
+	* email
+	 	* Name: email
+	 	* Name format: Unspecified
+	 	* Value: user.email
+	<br/>
+	<img src="Documentation/Images/App-022.png" alt="Add Application"/>
+	<br/>
+- Feedback:
+	<br/>
+	<img src="Documentation/Images/App-023.png" alt="Add Application"/>
+	<br/>
+- Configure Login Page URL: Provide Login Page URL for Green Brand SAML Application.
+
+	* This link will include client ID for Proxy OpenID Connect application
+
+	* For Example:
+	https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize?client_id=0oaeve25ssteDW65b0h7&redirect_uri=https://oktane2018saml2.azurewebsites.net/SignIn/Link?Brand=GREEN&response_mode=form_post&response_type=code&scope=openid profile&state=dummy&nonce=dummy&idp=0oaeqowu70ha5M60s0h7
+	<br/>
+	<img src="Documentation/Images/App-024.png" alt="Add Application"/>
+	<br/>
+- Assign group to application: Assign GreenBrand Group
+	<br/>
+	<img src="Documentation/Images/App-025.png" alt="Add Application"/>
+	<br/>
+### 6.4 Configure SAML 2.0 Blue Brand Application ###
+For SAML branded application, we will have to create separate configuration for each brand. Now, we will add SAML 2.0 Blue Brand application.
+
+- Click on **Add Application** button
+	<br/>
+	<img src="Documentation/Images/App-001.png" alt="Add Application"/>
+	<br/>	
+- Click on **Create New App** button
+	<br/>
+	<img src="Documentation/Images/App-002.png" alt="Add Application"/>
+	<br/>
+- New Application Integration:
+	
+	* Platform: Web
+	* Sign on Method: SAML 2.0
+	<br/>
+	<img src="Documentation/Images/App-018.png" alt="Add Application"/>
+	<br/> 
+- SAML Integration:
+	* Provide App Name: SAML2 Blue WebApp
+	<br/>
+	<img src="Documentation/Images/App-026.png" alt="Add Application"/>
+	<br/>
+
+- SAML Settings:
+	* Single Sign On URL: Provide Sign On URL e.g. https://oktane2018saml2.azurewebsites.net/Saml2/Acs
+	* Recipient URL: Same as Sign On URL
+	* Destination URL: Same as Sign On URL
+	* Audience Restriction: e.g. https://www.oktane2018.com/okta.clients.SAML2
+	* Name ID Format: Unspecified
+	* Response: Signed
+	* Assertion Signature: Signed
+	<br/>
+	<img src="Documentation/Images/App-020.png" alt="Add Application"/>
+	<br/>
+- SAML Logout Setting: click on Show Advance Settings and Provide Single Logout URL and Certificate
+	* SAML Single Logout: Enabled 
+	* Signle Logout URL: e.g. https://oktane2018saml2.azurewebsites.net/
+	* SP Issuer: Provide issuer e.g. https://www.oktane2018.com/okta.clients.SAML2
+	* Signature Certificate: Upload certificate file
+	<br/>
+	<img src="Documentation/Images/App-021.png" alt="Add Application"/>
+	<br/>
+- SAML Attributes: Provide attributes that will be available in SAML response
+	* uid
+		* Name: uid
+		* Name format: Unspecified
+		* Value: user.id
+	* orgid
+		* Name: orgid
+		* Name format: Basic
+		* Value: value of OrgId e.g. 00oen1q08omzCcwsC0h7
+	* brand
+		* Name: brand
+		* Name format: Basic
+		* Value: BLUE
+	* name
+		* Name: name
+		* Name format: Unspecified
+		* Value: user.displayName
+	* firstName
+		* Name: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+		* Name format: Unspecified
+		* Value: user.firstName
+	* lastName
+		* Name: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname
+		* Name format: Unspecified
+		* Value: user.lastName
+	* login
+		* Name: login
+		* Name format: Unspecified
+		* Value: user.login
+	* email
+	 	* Name: email
+	 	* Name format: Unspecified
+	 	* Value: user.email
+	<br/>
+	<img src="Documentation/Images/App-027.png" alt="Add Application"/>
+	<br/>
+- Feedback:
+	<br/>
+	<img src="Documentation/Images/App-023.png" alt="Add Application"/>
+	<br/>
+- Configure Login Page URL: Provide Login Page URL for Green Brand SAML Application.
+
+	* This link will include client ID for Proxy OpenID Connect application
+
+	* For Example:
+	https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize?client_id=0oaeve25ssteDW65b0h7&redirect_uri=https://oktane2018saml2.azurewebsites.net/SignIn/Link?Brand=BLUE&response_mode=form_post&response_type=code&scope=openid profile&state=dummy&nonce=dummy&idp=0oaeqqyn5fpDNZHwh0h7
+	<br/>
+	<img src="Documentation/Images/App-028.png" alt="Add Application"/>
+	<br/>
+- Assign group to application: Assign BlueBrand Group
+	<br/>
+	<img src="Documentation/Images/App-029.png" alt="Add Application"/>
+	<br/>
 
 # E. Configure, Deploy and Run Web Applications<a id="sec-5" name="sec-5"></a>
 TODO - Run and Test Web Applications
