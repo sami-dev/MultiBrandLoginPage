@@ -566,5 +566,98 @@ For SAML branded application, we will have to create separate configuration for 
 	<img src="Documentation/Images/App-029.png" alt="Add Application"/>
 	<br/>
 
+### 6.5 Configure SAML 2.0 Okta Application ###
+For SAML branded application, we will have to create separate configuration for each brand. Now, we will add SAML 2.0 Okta application (that will show default Okta login page).
+
+- Click on **Add Application** button
+	<br/>
+	<img src="Documentation/Images/App-001.png" alt="Add Application"/>
+	<br/>	
+- Click on **Create New App** button
+	<br/>
+	<img src="Documentation/Images/App-002.png" alt="Add Application"/>
+	<br/>
+- New Application Integration:
+	
+	* Platform: Web
+	* Sign on Method: SAML 2.0
+	<br/>
+	<img src="Documentation/Images/App-018.png" alt="Add Application"/>
+	<br/> 
+- SAML Integration:
+	* Provide App Name: SAML2 Blue WebApp
+	<br/>
+	<img src="Documentation/Images/App-030.png" alt="Add Application"/>
+	<br/>
+
+- SAML Settings:
+	* Single Sign On URL: Provide Sign On URL e.g. https://oktane2018saml2.azurewebsites.net/Saml2/Acs
+	* Recipient URL: Same as Sign On URL
+	* Destination URL: Same as Sign On URL
+	* Audience Restriction: e.g. https://www.oktane2018.com/okta.clients.SAML2
+	* Name ID Format: Unspecified
+	* Response: Signed
+	* Assertion Signature: Signed
+	<br/>
+	<img src="Documentation/Images/App-020.png" alt="Add Application"/>
+	<br/>
+- SAML Logout Settings: click on Show Advance Settings and Provide Single Logout URL and Certificate
+	* SAML Single Logout: Enabled 
+	* Signle Logout URL: e.g. https://oktane2018saml2.azurewebsites.net/
+	* SP Issuer: Provide issuer e.g. https://www.oktane2018.com/okta.clients.SAML2
+	* Signature Certificate: Upload certificate file
+	<br/>
+	<img src="Documentation/Images/App-021.png" alt="Add Application"/>
+	<br/>
+- SAML Attributes: Provide attributes that will be available in SAML response
+	* uid
+		* Name: uid
+		* Name format: Unspecified
+		* Value: user.id
+	* orgid
+		* Name: orgid
+		* Name format: Basic
+		* Value: value of Okta OrgId e.g. 00oen1q08omzCcw####
+	* brand
+		* Name: brand
+		* Name format: Basic
+		* Value: OKTA
+	* name
+		* Name: name
+		* Name format: Unspecified
+		* Value: user.displayName
+	* firstName
+		* Name: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname
+		* Name format: Unspecified
+		* Value: user.firstName
+	* lastName
+		* Name: http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname
+		* Name format: Unspecified
+		* Value: user.lastName
+	* login
+		* Name: login
+		* Name format: Unspecified
+		* Value: user.login
+	* email
+	 	* Name: email
+	 	* Name format: Unspecified
+	 	* Value: user.email
+	<br/>
+	<img src="Documentation/Images/App-031.png" alt="Add Application"/>
+	<br/>
+- Feedback:
+	<br/>
+	<img src="Documentation/Images/App-023.png" alt="Add Application"/>
+	<br/>
+- Configure Login Page URL: Use the default organization login page
+	<br/>
+	<img src="Documentation/Images/App-032.png" alt="Add Application"/>
+	<br/>
+- Assign group to application: Assign both GreenBrand Group and BlueBrand Group
+	<br/>
+	<img src="Documentation/Images/App-033.png" alt="Add Application"/>
+	<br/>
+
+
 # E. Configure, Deploy and Run Web Applications<a id="sec-5" name="sec-5"></a>
 TODO - Run and Test Web Applications
