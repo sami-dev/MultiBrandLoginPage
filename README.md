@@ -52,7 +52,7 @@ TODO - Deployment Instructions for Web Applications
 
 Okta allows you to create custom OAuth 2.0 authorization servers. Create a new custom authorization server for this application.
 
-1. Go to Security -> API -> Authorization Servers
+1. Go to **Security → API → Authorization Servers**
 2. Click on **"Add authorization server"** button
 
 	<img src="Documentation/Images/AuthServer-001.png" alt="Add Authorization Server" />
@@ -138,7 +138,7 @@ Okta allows you to create Identity Providers to manage federations with external
 ## Step 3. Enabling CORS (Trusted Origins) ##
 In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your websites to make an XHR to the Okta API with the Okta session cookie. Every website origin must be explicitly permitted via the administrator UI for CORS. You have to enable CORS for the Branded Login pages.
 
-**Go to Security -> API -> Trusted Origins**
+**Go to Security → API → Trusted Origins**
 
 ### 3.1 Add CORS for Green Brand Login Page ###
 - Click on **Add Origin**
@@ -166,7 +166,7 @@ In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your w
 ## Step 4. Create Test Accounts (Add Person) ##
 Now, we will add two test accounts in Okta. Use the People page to add test users.
 
-Go to **Directory -> People**
+Go to **Directory → People**
 
 ### 4.1 Add Test User Account for Green Brand ###
 Enter a test user account for Green Brand. For Example: John.Doe@greenbrand.com
@@ -205,7 +205,7 @@ Enter a test user account for Green Brand. For Example: Jane.Doe@bluebrand.com
 ## Step 5. Create Groups ##
 Its easier to manage users and applications by creating groups. Now, we will create two brand groups and add test accounts to those groups. 
 
-Go to **Directory -> Groups** 
+Go to **Directory → Groups** 
 
 ### 5.1 Add GreenBrand Group ###
 Create a group for Green Brand users.
@@ -241,13 +241,98 @@ Create a group for Blue Brand users.
 	<br/>
 
 ## Step 6. Add OpenID Connect and SAML 2.0 Applications ##
+Okta allows you to configure OpenID Connect or SAML2 Web applications. 
 
-### 6.1 Add OpenID Connect Application ###
+Go to **Applications → Applications**
 
-### 6.2 Add SAML 2.0 Branded Applications ###
-#### 6.2.1 Add OpenID Connect Client Application for SAML applications ####
-#### 6.2.2 Add SAML 2.0 Green Brand Application ####
-#### 6.2.3 Add SAML 2.0 Blue Brand Application ####
+
+### 6.1 Add OpenID Connect Branded Application ###
+Lets first add OpenID connect branded Web Application.
+
+- Click on **Add Application** button
+	<br/>
+	<img src="Documentation/Images/App-001.png" alt="Add Application"/>
+	<br/>	
+- Click on **Create New App** button
+	<br/>
+	<img src="Documentation/Images/App-002.png" alt="Add Application"/>
+	<br/>
+- New Application Integration
+	
+	* Platform: Web
+	* Sign on Method: OpenID Connect
+	<br/>
+	<img src="Documentation/Images/App-003.png" alt="Add Application"/>
+	<br/>
+- Provide OpenID Connect Application Integration details
+
+	* Application Name: OpenID Connect WebApp
+	* Application Logo: [optional]
+	* Login Redirect URIs: provide Login URL for application 
+		e.g. https://oktane2018openidconnect.azurewebsites.net/
+	* Logout Redirect URIs: provide Logout URL for application
+		e.g. https://oktane2018openidconnect.azurewebsites.net/
+		<br/>
+		<img src="Documentation/Images/App-004.png" alt="Add Application"/>
+		<br/>
+- Edit Application Configuration:
+
+	* Select Grant Types: 
+		* Authorization Code
+		* Refresh Token 
+		* Implicit (Hybrid) - Allow ID Token, Allow Access Token
+	* Click on **Save** button to save changes.
+	* Note: Client Credentials are needed for application configuration
+	<br/>
+	<img src="Documentation/Images/App-005.png" alt="Add Application"/>
+	<br/>
+	<img src="Documentation/Images/App-006.png" alt="Add Application"/>
+	<br/>
+- Assign application to groups:
+
+	* BlueBrand Group
+	* GreenBrand Group
+	<br/>
+	<img src="Documentation/Images/App-007.png" alt="Add Application"/>
+	<br/>
+- Go to Applications List. You will see newly added application.
+	<br/>
+	<img src="Documentation/Images/App-008.png" alt="Add Application"/>
+	<br/>
+- Add Access Policy for application:
+	* Go to Authorization Server.
+	* Go to Security → API
+	* Select Authorization server
+	<br/>
+	<img src="Documentation/Images/App-009.png" alt="Add Application"/>
+	<br/>
+- Go to Access Policies under Authorization Server
+	* Add New Access Policy (if not already exists)
+	* Click on **Add Policy** button.
+	<br/>
+	<img src="Documentation/Images/App-010.png" alt="Add Application"/>
+	<br/>
+- Provide information for Access Policy
+
+	* Name: OpenID Connect WebApp Policy
+	* Description: Access Policy for OpenID Connect WebApp
+	* Select the **OpenID Connect Web App**
+	<br/>
+	<img src="Documentation/Images/App-011.png" alt="Add Application"/>
+	<br/>
+- Add User Access Rule for OpenID Connect Web Application
+	* Rule Name: User Access Rule
+	<br/>
+	<img src="Documentation/Images/App-012.png" alt="Add Application"/>
+	<br/>
+- Review Access Policy for the OpenID Connect Web Application
+	<br/>
+	<img src="Documentation/Images/App-013.png" alt="Add Application"/>
+	<br/>
+### 6.2 Add OpenID Connect Client Proxy Application for SAML2 Applications ###
+### 6.3 Add SAML 2.0 Branded Applications ###
+#### 6.3.1 Configure SAML 2.0 Green Brand Application ####
+#### 6.3.2 Configure SAML 2.0 Blue Brand Application ####
 
 # E. Configure, Deploy and Run Web Applications<a id="sec-5" name="sec-5"></a>
 TODO - Run and Test Web Applications
