@@ -48,7 +48,7 @@ TODO - Deployment Instructions for Web Applications
 4. Create Groups
 5. Configure OpenID Connect and SAML2 applications
 
-##Step 1. Create a Custom Authorization Server##
+## Step 1. Create a Custom Authorization Server ##
 
 Okta allows you to create custom OAuth 2.0 authorization servers. Create a new custom authorization server for this application.
 
@@ -71,14 +71,14 @@ Okta allows you to create custom OAuth 2.0 authorization servers. Create a new c
 
 	By default, there is no access policies. We will add access policies for our sample application later.
 
-##Step 2. Create Identity Providers for each brand##
+## Step 2. Create Identity Providers for each brand ##
 
 Okta allows you to create Identity Providers to manage federations with external Identity Providers (IdP). Each identity provider (IdP) requires some setup. For this application, we will create an Identity Provider for each branded login page.
 
 1. Go to Security -> API -> Identity Providers
 	<img src="Documentation/Images/IdP-001.png" alt="Add Identity Provider"/>
 
-###2.1	Create Identity Provider for "Green Brand Login Page"###
+### 2.1	Create Identity Provider for "Green Brand Login Page" ###
 1. Click on **"Add Identity Provider"** button
 2. Select “Add SAML 2.0 IdP”
 	<br/>
@@ -107,7 +107,7 @@ Okta allows you to create Identity Providers to manage federations with external
 	<img src="Documentation/Images/IdP-005.png" alt="Add Identity Provider"/>
 	<br/>
 
-###2.2	Create Identity Provider for "Blue Brand Login Page"###
+### 2.2	Create Identity Provider for "Blue Brand Login Page" ###
 1. Click on **"Add Identity Provider"** button
 2. Select “Add SAML 2.0 IdP”
 	<img src="Documentation/Images/IdP-002.png" alt="Add Identity Provider"/>
@@ -135,12 +135,12 @@ Okta allows you to create Identity Providers to manage federations with external
 	<img src="Documentation/Images/IdP-008.png" alt="Add Identity Provider"/>
 	<br/>
 
-##Step 3. Enabling CORS (Trusted Origins) ##
+## Step 3. Enabling CORS (Trusted Origins) ##
 In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your websites to make an XHR to the Okta API with the Okta session cookie. Every website origin must be explicitly permitted via the administrator UI for CORS. You have to enable CORS for the Branded Login pages.
 
 **Go to Security -> API -> Trusted Origins**
 
-###3.1 Add CORS for Green Brand Login Page###
+### 3.1 Add CORS for Green Brand Login Page ###
 - Click on **Add Origin**
 	* Name: Green Brand Login
 	* Origin URL: Provide Branded Login Page URL e.g. https://login.greenbrand.com
@@ -149,7 +149,7 @@ In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your w
 	<br/>
 	<img src="Documentation/Images/Cors-001.png" alt="Add CORS"/>
 	<br/>
-###3.2 Add CORS for Blue Brand Login Page###
+### 3.2 Add CORS for Blue Brand Login Page ###
 - Click on **Add Origin**
 	* Name: Blue Brand Login
 	* Origin URL: Provide Branded Login Page URL e.g. https://login.bluebrand.com
@@ -163,12 +163,12 @@ In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your w
 	<img src="Documentation/Images/Cors-003.png" alt="Add CORS"/>
 	<br/>
 
-##Step 4. Create Test Accounts (Add Person)##
+## Step 4. Create Test Accounts (Add Person) ##
 Now, we will add two test accounts in Okta. Use the People page to add test users.
 
 Go to **Directory -> People**
 
-###4.1 Add Test User Account for Green Brand###
+### 4.1 Add Test User Account for Green Brand ###
 Enter a test user account for Green Brand. For Example: John.Doe@greenbrand.com
 
 - Click on **Add Person**
@@ -183,7 +183,7 @@ Enter a test user account for Green Brand. For Example: John.Doe@greenbrand.com
 	<img src="Documentation/Images/Person-001.png" alt="Add Person"/>
 	<br/>
 
-###4.2 Add Test User Account for Blue Brand###
+### 4.2 Add Test User Account for Blue Brand ###
 Enter a test user account for Green Brand. For Example: Jane.Doe@bluebrand.com
 
 - Click on **Add Person**
@@ -202,12 +202,12 @@ Enter a test user account for Green Brand. For Example: Jane.Doe@bluebrand.com
 	<img src="Documentation/Images/Person-003.png" alt="Add Person"/>
 	<br/>
 
-##Step 5. Create Groups##
+## Step 5. Create Groups ##
 Its easier to manage users and applications by creating groups. Now, we will create two brand groups and add test accounts to those groups. 
 
 Go to **Directory -> Groups** 
 
-###5.1 Add GreenBrand Group###
+### 5.1 Add GreenBrand Group ###
 Create a group for Green Brand users.
 
 - Click on **Add Group**
@@ -222,7 +222,7 @@ Create a group for Green Brand users.
 	<br/>
  
 
-###5.2 Add BlueBrand Group###
+### 5.2 Add BlueBrand Group ###
 Create a group for Blue Brand users.
 
 - Click on **Add Group**
@@ -240,14 +240,14 @@ Create a group for Blue Brand users.
 	<img src="Documentation/Images/Groups-005.png" alt="Add Person"/>
 	<br/>
 
-##Step 6. Add OpenID Connect and SAML 2.0 Applications##
+## Step 6. Add OpenID Connect and SAML 2.0 Applications ##
 
-###6.1 Add OpenID Connect Application###
+### 6.1 Add OpenID Connect Application ###
 
-###6.2 Add SAML 2.0 Branded Applications###
-####6.2.1 Add OpenID Connect Client Application for SAML applications ####
-####6.2.2 Add SAML 2.0 Green Brand Application ####
-####6.2.3 Add SAML 2.0 Blue Brand Application ####
+### 6.2 Add SAML 2.0 Branded Applications ###
+#### 6.2.1 Add OpenID Connect Client Application for SAML applications ####
+#### 6.2.2 Add SAML 2.0 Green Brand Application ####
+#### 6.2.3 Add SAML 2.0 Blue Brand Application ####
 
 # Configure, Deploy and Run Web Applications<a id="sec-5" name="sec-5"></a>
 TODO - Run and Test Web Applications
