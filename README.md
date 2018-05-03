@@ -19,7 +19,7 @@ Before you get started, you'll need to install or set up the
 software and services below:
 
 1.  Download and install [Visual Studio Community Edition](https://www.visualstudio.com/downloads/)     
-    At the time, Visual Studio 2017 is the most recent version of Visual Studio available.
+    At this time, Visual Studio 2017 is the most recent version of Visual Studio available.
 
     <img src="Documentation/Images/vs-community.png" alt="Visual Studion Community"/>
 	<br/>
@@ -32,13 +32,25 @@ software and services below:
 
 3.  *Optional:* Sign up for a [free trial of Microsoft Azure](http://azure.microsoft.com/en-us/pricing/free-trial/).
     
-    This step is not required. You can run sample applications from your computer. However, if you want to host Branded Login pages and Web applications on a public-facing Website then Azure is the easiest place to do that.
+    This step is not required. You can run sample applications from your computer. However, if you want to host Branded Login pages and Web applications on a public-facing Website then Azure is the easiest place to do that. You can map custom Domain Names to Azure Web application. This will be useful for hosting multi-branded login page application.
+
 	<br/>
 	<img src="Documentation/Images/Azure-001.PNG" alt="Microsoft Azure Free" width="800"/> 
 	<br/>
 
+
 # C. Build MVC Web Applications<a id="sec-3" name="sec-3"></a>
 TODO - Deployment Instructions for Web Applications
+List of three apps. Description of each app.
+Description of code to make it multi-branded login page
+App Settings - Web.Config for each project
+OIDC - Notification handler for Startup file 
+Normally, OIDC will determine brand from hostname. For this demo, we will use Id 
+SAML2: Startup - SecurityIdentityProvider
+
+Login Pages: Map Relay State to redirect URL
+SignIn Controller - Send relaystate back to Authorization server
+MVC App - stylesheets for each brand - responsive design - internationalized - Okta Sign-in widget support internationalization 
 
 # D. Setting up Okta's Preview Sandbox<a id="sec-4" name="sec-4"></a>
 
@@ -62,7 +74,7 @@ Okta allows you to create custom OAuth 2.0 authorization servers. Create a new c
 
 	* Name: Franchisor Org Auth
 	* Audience: https://franchisor.org.com
-	* Description: Authorization server for franchisors
+	* Description: Authorization server for franchisor 
 
 4.  It will add a custom authorization server.
 
@@ -73,17 +85,18 @@ Okta allows you to create custom OAuth 2.0 authorization servers. Create a new c
 	By default, there is no access policies. We will add access policies for our sample application later.
 
 ## Step 2. Create Identity Providers for Each Branded Login Page ##
-
 Okta allows you to create Identity Providers to manage federations with external Identity Providers (IdP). Each identity provider (IdP) requires some setup. For this application, we will create an Identity Provider for each branded login page.
 
-1. Go to Security -> API -> Identity Providers
+1. Go to **Security → API → Identity Providers**
 	<img src="Documentation/Images/IdP-001.png" alt="Add Identity Provider"/>
 
 ### 2.1	Create Identity Provider for "Green Brand Login Page" ###
+This is for Green Brand. This will not be acted as true identity provider. This will not do traditional SAML 2.0 Request/Response (as SAML2 functionaliy is never used). Its only job to host login page, which contains the sign-in widget. 
+ 
 1. Click on **"Add Identity Provider"** button
 2. Select “Add SAML 2.0 IdP”
 	<br/>
-	<img src="Documentation/Images/IdP-002.png" alt="Add Identity Provider"/>
+	<img src="Documentation/Images/IdP-002A.png" alt="Add Identity Provider"/>
 	<br/><br/>
 3. Provide fields for new Identity Provider
 	* Name: Green Brand Login Page
@@ -93,9 +106,10 @@ Okta allows you to create Identity Providers to manage federations with external
 	* If No match is found: Redirect to Okta Sign-in Page
 	* SAML Protocol Settings:
 	* IdP Issuer URI: Provide URL for Green branded Login Page. 
-		For Example: https://login.greenbrand.com
-	* IdP Single Sign-on URI: Provide URL for Green brand Login Page URL. 
-		For Example: https://login.greenbrand.com
+		For Example: https://demo.login.greenbrand.com
+	* IdP Single Sign-on URI: Provide URL for Green brand Login Page URL.
+		This is the URL where login page application is hosted. Unauthenticated user will be redirected there. 
+		For Example: https://demo.login.greenbrand.com
 	* Request Binding: HTTP POST
 	* Request Signature: Unchecked
 	* Rest of the fields : Default Values
@@ -105,13 +119,16 @@ Okta allows you to create Identity Providers to manage federations with external
 	<br/>
 4.  It will create a new SAML 2.0 Identity Provider
 	<br/>
-	<img src="Documentation/Images/IdP-005.png" alt="Add Identity Provider"/>
+	<img src="Documentation/Images/IdP-005A.png" alt="Add Identity Provider"/>
 	<br/>
+	* Note: The last part of Assertion Consumer Service (ACS) URL provides **idp** value. This value be will be sent as **idp** query string parameter value to pick green branded login page.
 
 ### 2.2	Create Identity Provider for "Blue Brand Login Page" ###
+This is for Blue Brand. This will not be acted as true identity provider. This will not do traditional SAML 2.0 Request/Response (as SAML2 functionaliy is never used). Its only job to host login page, which contains the sign-in widget. 
+
 1. Click on **"Add Identity Provider"** button
 2. Select “Add SAML 2.0 IdP”
-	<img src="Documentation/Images/IdP-002.png" alt="Add Identity Provider"/>
+	<img src="Documentation/Images/IdP-002A.png" alt="Add Identity Provider"/>
 3. Provide fields for new Identity Provider
 	* Name: Blue Brand Login Page
 	* IdP Username: idpuser.subjectNameId
@@ -119,10 +136,11 @@ Okta allows you to create Identity Providers to manage federations with external
 	* Match against: Okta Username
 	* If No match is found: Redirect to Okta Sign-in Page
 	* SAML Protocol Settings:
-	* IdP Issuer URI: Provide URL for Blue branded Login Page. 
-		For Example: https://login.bluebrand.com
+	* IdP Issuer URI: Provide URL for Blue branded Login Page.
+		For Example: https://demo.login.bluebrand.com
 	* IdP Single Sign-on URI: Provide URL for Blue brand Login Page URL. 
-		For Example: https://login.bluebrand.com
+		This is the URL where login page application is hosted. Unauthenticated user will be redirected there. 
+		For Example: https://demo.login.bluebrand.com
 	* Request Binding: HTTP POST
 	* Request Signature: Unchecked
 	* Rest of the fields : Default Values
@@ -135,6 +153,7 @@ Okta allows you to create Identity Providers to manage federations with external
 	<br/>
 	<img src="Documentation/Images/IdP-008.png" alt="Add Identity Provider"/>
 	<br/>
+	* Note: The last highlighted part of Assertion Consumer Service (ACS) URL provides **idp** value. This value be will be sent as **idp** query string parameter value to pick green branded login page.
 
 ## Step 3. Enabling CORS (Trusted Origins) ##
 In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your websites to make an XHR to the Okta API with the Okta session cookie. Every website origin must be explicitly permitted via the administrator UI for CORS. You have to enable CORS for the Branded Login pages.
@@ -144,7 +163,7 @@ In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your w
 ### 3.1 Add CORS for Green Brand Login Page ###
 - Click on **Add Origin**
 	* Name: Green Brand Login
-	* Origin URL: Provide Branded Login Page URL e.g. https://login.greenbrand.com
+	* Origin URL: Provide Branded Login Page URL e.g. https://demo.login.greenbrand.com
 	* Type: CORS [Checked] Redirect [Unchecked]
 - Click on **Save** button
 	<br/>
@@ -153,7 +172,7 @@ In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your w
 ### 3.2 Add CORS for Blue Brand Login Page ###
 - Click on **Add Origin**
 	* Name: Blue Brand Login
-	* Origin URL: Provide Branded Login Page URL e.g. https://login.bluebrand.com
+	* Origin URL: Provide Branded Login Page URL e.g. https://demo.login.bluebrand.com
 	* Type: CORS [Checked] Redirect [Unchecked]
 - Click on **Save** button
 	<br/>
@@ -280,13 +299,12 @@ Lets first add OpenID connect branded Web Application.
 
 	* Select Grant Types: 
 		* Authorization Code
-		* Refresh Token 
-		* Implicit (Hybrid) - Allow ID Token, Allow Access Token
+		* Implicit (Hybrid) - Allow ID Token
 	* Click on **Save** button to save changes.
 	* Note: Client Credentials are needed for application configuration
 	<br/>
-	<img src="Documentation/Images/App-005.png" alt="Add Application"/>
-	<br/>
+	<img src="Documentation/Images/App-005A.png" alt="Add Application"/>
+	<img src="Documentation/Images/App-005B.png" alt="Add Application"/>
 	<img src="Documentation/Images/App-006.png" alt="Add Application"/>
 	<br/>
 - Assign application to groups:
@@ -302,7 +320,7 @@ Lets first add OpenID connect branded Web Application.
 	<br/>
 - Add Access Policy for application:
 	* Go to Authorization Server.
-	* Go to Security → API
+	* Go to **Security → API**
 	* Select Authorization server
 	<br/>
 	<img src="Documentation/Images/App-009.png" alt="Add Application"/>
@@ -318,6 +336,7 @@ Lets first add OpenID connect branded Web Application.
 	* Name: OpenID Connect WebApp Policy
 	* Description: Access Policy for OpenID Connect WebApp
 	* Select the **OpenID Connect Web App**
+	* Click on **Create Policy** button
 	<br/>
 	<img src="Documentation/Images/App-011.png" alt="Add Application"/>
 	<br/>
@@ -354,7 +373,7 @@ Now, we will configure an OpenID Connect Client Proxy Application. This will be 
 	* Application Name: SAML2 Custom Login Page OIDC Client
 	* Application Logo: Optional
 
-	* Provide Login Redirect URIs:
+	* Provide Login Redirect URIs: For every SAML 2 app that want to use branded login page,  we must configure redirect URL for that SAML app that will reissue SAML2 AuthN request. In response, Okta will send SAML response.
 		* For Example: Green Brand Application SingIn Link
 		https://oktane2018saml2.azurewebsites.net/SignIn/Link?Brand=GREEN
 		* For Example: Blue Brand Application SingIn Link
@@ -367,8 +386,9 @@ Now, we will configure an OpenID Connect Client Proxy Application. This will be 
 	<img src="Documentation/Images/App-015.png" alt="Add Application"/>
 	<br/>
 	<br/>
-	<img src="Documentation/Images/App-016.png" alt="Add Application"/>
+	<img src="Documentation/Images/App-016A.png" alt="Add Application"/>
 	<br/>
+	* This **client ID** in client credentials section will be used in every SAML2 application configuration. 
 	* Assign this application to Everyone group. Because this application will be a common Proxy application for all SAML applications
 	<br/>
 	<img src="Documentation/Images/App-017.png" alt="Add Application"/>
@@ -398,7 +418,7 @@ For SAML branded application, we will have to create separate configuration for 
 	<img src="Documentation/Images/App-019.png" alt="Add Application"/>
 	<br/>
 
-- SAML Setting
+- SAML Settings:
 	* Single Sign On URL: Provide Sign On URL e.g. https://oktane2018saml2.azurewebsites.net/Saml2/Acs
 	* Recipient URL: Same as Sign On URL
 	* Destination URL: Same as Sign On URL
@@ -457,13 +477,17 @@ For SAML branded application, we will have to create separate configuration for 
 	<br/>
 	<img src="Documentation/Images/App-023.png" alt="Add Application"/>
 	<br/>
-- Configure Login Page URL: Provide Login Page URL for Green Brand SAML Application.
+- Configure Login Page URL: Provide Login Page URL for Green Brand SAML Application. This link will include client ID for Proxy OpenID Connect application
 
-	* This link will include client ID for Proxy OpenID Connect application
-
-	* For Example:
+	* For Example:	
 	https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize?client_id=0oaeve25ssteDW65b0h7&redirect_uri=https://oktane2018saml2.azurewebsites.net/SignIn/Link?Brand=GREEN&response_mode=form_post&response_type=code&scope=openid profile&state=dummy&nonce=dummy&idp=0oaeqowu70ha5M60s0h7
-	<br/>
+	
+		* **client_id**: It is the Client ID for Proxy OpenID Connect App. 
+		* **redirect_uri** : It is the endpoint for SAML2 application that will issue Sign-in request.This URL must be defined as valid URL in Proxy app. 
+		* **idp**: It is the value for green branded login page (IdP).
+    	* **Authorize Endpoint**: First part is authorize end point of custom authorization server e.g. https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize
+
+    <br/>
 	<img src="Documentation/Images/App-024.png" alt="Add Application"/>
 	<br/>
 - Assign group to application: Assign GreenBrand Group
@@ -559,6 +583,10 @@ For SAML branded application, we will have to create separate configuration for 
 
 	* For Example:
 	https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize?client_id=0oaeve25ssteDW65b0h7&redirect_uri=https://oktane2018saml2.azurewebsites.net/SignIn/Link?Brand=BLUE&response_mode=form_post&response_type=code&scope=openid profile&state=dummy&nonce=dummy&idp=0oaeqqyn5fpDNZHwh0h7
+		* **client_id**: It is the Client ID for Proxy OpenID Connect App. 
+		* **redirect_uri** : It is the endpoint for SAML2 application that will issue Sign-in request.This URL must be defined as valid URL in Proxy app. 
+		* **idp**: It is the value for green branded login page (IdP).
+    	* **Authorize Endpoint**: First part is authorize end point of custom authorization server e.g. https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize
 	<br/>
 	<img src="Documentation/Images/App-028.png" alt="Add Application"/>
 	<br/>
@@ -569,6 +597,7 @@ For SAML branded application, we will have to create separate configuration for 
 
 ### 6.5 Configure SAML 2.0 Okta Application ###
 For SAML branded application, we will have to create separate configuration for each brand. Now, we will add SAML 2.0 Okta application (that will show default Okta login page).
+[MM TODO]: This will not use any of the custom login page. 
 
 - Click on **Add Application** button
 	<br/>
@@ -662,3 +691,6 @@ For SAML branded application, we will have to create separate configuration for 
 
 # E. Configure, Deploy and Run Web Applications<a id="sec-5" name="sec-5"></a>
 TODO - Run and Test Web Applications
+Sections - for WebConfig
+2 Apps - Unprotected, Login page and User profile page (for each)
+Azure - deployment
