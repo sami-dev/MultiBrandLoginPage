@@ -40,13 +40,58 @@ software and services below:
 
 
 # C. Build MVC Web Applications<a id="sec-3" name="sec-3"></a>
-Okta.Clients 
+The Visual Studio solution that you have downloaded contains three projects.
+Open solution file in Visual Studio. You should be able to see three projects.
+	<br/>
+	<img src="Documentation/Images/VS-001.PNG" alt="Visual Studio" /> 
+	<br/>
 
 
-TODO - Deployment Instructions for Web Applications
-List of three apps. Description of each app.
-Description of code to make it multi-branded login page
-
+1. **Okta.Clients.OpenIdConnect**: This is a sample **OpenID Connect** MVC Web application that demonstrate the use of branded login pages for a single Okta org.
+	* It is a sample server-side Web application.
+	* It uses Microsoft.Owin Middleware for OpenID Connect protocol implementation.
+	<br/>
+	<img src="Documentation/Images/VS-002.PNG" alt="Visual Studio" /> 
+	<br/>
+	* User is authenticated via selected branded login page 
+	* Two brands are used in this sample: (a) Green Brand; and (b) Blue Brand  	
+	* You can run this project locally (localhost) or publish this application on Microsoft Azure. 
+	<br/>
+	<img src="Documentation/Images/VS-002A.PNG" alt="Visual Studio" /> 
+	<br/>
+	* Run application and you will see "Choose a Branded Login Page" message
+	<br/>
+	<img src="Documentation/Images/VS-002B.PNG" alt="Visual Studio" width="800" /> 
+	<br/>
+	* **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
+	<br/>
+2. **Okta.Clients.SAML2**: This is a sample **SAML 2.0** MVC Web application that demonstrate the use of branded login pages for a single Okta org.
+	* It is a sample server-side Web application.
+	* It uses Sustainsys.Saml2 NuGet package for SAML2 protocol implementation. 
+	<br/>
+	<img src="Documentation/Images/VS-003.PNG" alt="Visual Studio" /> 
+	<br/>
+	* User is authenticated via branded login pages. 
+	* Two brands are used in this sample: (a) Green Brand; and (b) Blue Brand
+	* You can run this project locally (localhost) or publish this application on Microsoft Azure.
+	<br/>
+	<img src="Documentation/Images/VS-003A.PNG" alt="Visual Studio" /> 
+	<br/> 
+	* **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
+	<br/>
+3. **OktaLogin**: This is a MVC Web application that uses Okta Sign-in widget for user authentication.
+	* It is server-side MVC Web application
+	* It uses Okta Sign-In Widget for user authentication
+	* The Okta Sign-In Widget is a JavaScript library that gives you a fully-featured and customizable login experience which can be used to authenticate users on any website <a href="https://developer.okta.com/code/javascript/okta_sign-in_widget" target="_blank">Okta Sign-IN Widget Guide</a>	
+	* Two brands are used in this sample: (a) Green Brand; and (b) Blue Brand
+	* For each brand, there is a separate style sheet: (a) Style-Blue.css; and (b) Style-Green.css 
+	* It also supports multiple languages (System.Globalization)
+	* You can run this project locally (localhost) or publish this application on Microsoft Azure. There are several advantages on hosting on Azure including identifying brand based on hostname.    
+	<br/>
+	<img src="Documentation/Images/VS-004A.PNG" alt="Visual Studio" /> 
+	<br/> 
+	* **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
+	<br/>
 # D. Setting up Okta's Preview Sandbox<a id="sec-4" name="sec-4"></a>
 
 1. Create a Custom Authorization Server
