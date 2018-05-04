@@ -59,11 +59,11 @@ Open solution file in Visual Studio. You should be able to see three projects an
 	<br/>
 	<img src="Documentation/Images/VS-002A.png" alt="Visual Studio" /> 
 	<br/>
-	* Run application and you will see "Choose a Branded Login Page" message
+	* Set **Okta.Clients.OpenIdConnect** project as StartUp project and run application and you will see "Choose a Branded Login Page" message
 	<br/>
-	<img src="Documentation/Images/VS-002B.png" alt="Visual Studio" width="800" /> 
+	<img src="Documentation/Images/VS-002B1.png" alt="Visual Studio" width="800" /> 
 	<br/>
-	*  **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
+	*  <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
 	<br/>
 2. **Okta.Clients.SAML2**: This is a sample **SAML 2.0** MVC Web application that demonstrate the use of branded login pages for a single Okta org.
 	* It is a sample server-side Web application.
@@ -77,7 +77,11 @@ Open solution file in Visual Studio. You should be able to see three projects an
 	<br/>
 	<img src="Documentation/Images/VS-003A.png" alt="Visual Studio" /> 
 	<br/> 
-	*  **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
+	* Set **Okta.Clients.SAML2** project as StartUp project and run application and you will see "Choose a Branded Login Page" message
+	*  <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section E</a>
+	<br/>
+	<img src="Documentation/Images/VS-003B.png" alt="Visual Studio" width="800" /> 
+	<br/>
 	<br/>
 3. **OktaLogin**: This is a MVC Web application that uses Okta Sign-in widget for user authentication.
 	* It is server-side MVC Web application
@@ -90,7 +94,7 @@ Open solution file in Visual Studio. You should be able to see three projects an
 	<br/>
 	<img src="Documentation/Images/VS-004A.png" alt="Visual Studio" /> 
 	<br/> 
-	*  **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
+	*  <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section E</a>
 	<br/>
 # D. Setting up Okta's Preview Sandbox<a id="sec-4" name="sec-4"></a>
 
