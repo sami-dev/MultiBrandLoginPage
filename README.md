@@ -43,7 +43,7 @@ software and services below:
 The Visual Studio solution that you have downloaded contains three projects.
 Open solution file in Visual Studio. You should be able to see three projects.
 	<br/>
-	<img src="Documentation/Images/VS-001.PNG" alt="Visual Studio" /> 
+	<img src="Documentation/Images/VS-001.png" alt="Visual Studio" /> 
 	<br/>
 
 
@@ -51,17 +51,17 @@ Open solution file in Visual Studio. You should be able to see three projects.
 	* It is a sample server-side Web application.
 	* It uses Microsoft.Owin Middleware for OpenID Connect protocol implementation.
 	<br/>
-	<img src="Documentation/Images/VS-002.PNG" alt="Visual Studio" /> 
+	<img src="Documentation/Images/VS-002.png" alt="Visual Studio" /> 
 	<br/>
 	* User is authenticated via selected branded login page 
 	* Two brands are used in this sample: (a) Green Brand; and (b) Blue Brand  	
 	* You can run this project locally (localhost) or publish this application on Microsoft Azure. 
 	<br/>
-	<img src="Documentation/Images/VS-002A.PNG" alt="Visual Studio" /> 
+	<img src="Documentation/Images/VS-002A.png" alt="Visual Studio" /> 
 	<br/>
 	* Run application and you will see "Choose a Branded Login Page" message
 	<br/>
-	<img src="Documentation/Images/VS-002B.PNG" alt="Visual Studio" width="800" /> 
+	<img src="Documentation/Images/VS-002B.png" alt="Visual Studio" width="800" /> 
 	<br/>
 	* **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
 	<br/>
@@ -69,13 +69,13 @@ Open solution file in Visual Studio. You should be able to see three projects.
 	* It is a sample server-side Web application.
 	* It uses Sustainsys.Saml2 NuGet package for SAML2 protocol implementation. 
 	<br/>
-	<img src="Documentation/Images/VS-003.PNG" alt="Visual Studio" /> 
+	<img src="Documentation/Images/VS-003.png" alt="Visual Studio" /> 
 	<br/>
 	* User is authenticated via branded login pages. 
 	* Two brands are used in this sample: (a) Green Brand; and (b) Blue Brand
 	* You can run this project locally (localhost) or publish this application on Microsoft Azure.
 	<br/>
-	<img src="Documentation/Images/VS-003A.PNG" alt="Visual Studio" /> 
+	<img src="Documentation/Images/VS-003A.png" alt="Visual Studio" /> 
 	<br/> 
 	* **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
 	<br/>
@@ -88,7 +88,7 @@ Open solution file in Visual Studio. You should be able to see three projects.
 	* It also supports multiple languages (System.Globalization)
 	* You can run this project locally (localhost) or publish this application on Microsoft Azure. There are several advantages on hosting on Azure including identifying brand based on hostname.    
 	<br/>
-	<img src="Documentation/Images/VS-004A.PNG" alt="Visual Studio" /> 
+	<img src="Documentation/Images/VS-004A.png" alt="Visual Studio" /> 
 	<br/> 
 	* **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
 	<br/>
