@@ -77,16 +77,15 @@ Open solution file in Visual Studio. You should be able to see three projects an
 		<br/>
 		<img src="Documentation/Images/VS-003A.png" alt="Visual Studio" /> 
 		<br/> 
-	* Set **Okta.Clients.SAML2** project as StartUp project and run application and you will see "Okta Multi-Branded Login Pages" page.
-	*  <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section E</a>
+	* Set **Okta.Clients.SAML2** project as StartUp project and run application and you will see "Okta Multi-Branded Login Pages" page.	
 		<br/>
 		<img src="Documentation/Images/VS-003B.png" alt="Visual Studio" width="800" /> 
 		<br/>
+	*  <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section E</a>
 		<br/>
 3. **OktaLogin**: This is a MVC Web application that uses Okta Sign-in widget for user authentication.
 	* It is server-side MVC Web application
-	* It uses Okta Sign-In Widget for user authentication
-	* The Okta Sign-In Widget is a JavaScript library that gives you a fully-featured and customizable login experience which can be used to authenticate users on any website <a href="https://developer.okta.com/code/javascript/okta_sign-in_widget" target="_blank">Okta Sign-IN Widget Guide</a>	
+	* It uses <b>Okta Sign-In Widget</b> for user authentication. The Okta Sign-In Widget is a JavaScript library that gives you a fully-featured and customizable login experience which can be used to authenticate users on any website <a href="https://developer.okta.com/code/javascript/okta_sign-in_widget" target="_blank">Okta Sign-IN Widget Guide</a>	
 	* Two brands are used in this sample: (a) Green Brand; and (b) Blue Brand
 	* For each brand, there is a separate style sheet: (a) Style-Blue.css; and (b) Style-Green.css 
 	* It also supports multiple languages (System.Globalization)
@@ -94,6 +93,14 @@ Open solution file in Visual Studio. You should be able to see three projects an
 		<br/>
 		<img src="Documentation/Images/VS-004A.png" alt="Visual Studio" /> 
 		<br/> 
+	* Set **OktaLogin** project as StartUp project and run application with below parameters and you will see "Blue Brand Login Page" page. <a href="#">http://localhost:12411/?brand=blue&RelayState=2121</a>	
+		<br/>
+		<img src="Documentation/Images/VS-004C.png" alt="Visual Studio" width="800" /> 
+		<br/>
+	* To see "Green Brand Login Page", run with these parameters. <a href="#">http://localhost:12411/?brand=green&RelayState=2121</a>
+		<br/>
+		<img src="Documentation/Images/VS-004D.png" alt="Visual Studio" width="800" /> 
+		<br/>
 	* <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section E</a>
 		<br/>
 # D. Setting up Okta's Preview Sandbox<a id="sec-4" name="sec-4"></a>
