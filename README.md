@@ -41,7 +41,7 @@ software and services below:
 
 # C. Build MVC Web Applications<a id="sec-3" name="sec-3"></a>
 The Visual Studio solution that you have downloaded contains three projects.
-Open solution file in Visual Studio. You should be able to see three projects.
+Open solution file in Visual Studio. You should be able to see three projects and Build Solution.
 	<br/>
 	<img src="Documentation/Images/VS-001.png" alt="Visual Studio" /> 
 	<br/>
@@ -63,7 +63,7 @@ Open solution file in Visual Studio. You should be able to see three projects.
 	<br/>
 	<img src="Documentation/Images/VS-002B.png" alt="Visual Studio" width="800" /> 
 	<br/>
-	* **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
+	*  **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
 	<br/>
 2. **Okta.Clients.SAML2**: This is a sample **SAML 2.0** MVC Web application that demonstrate the use of branded login pages for a single Okta org.
 	* It is a sample server-side Web application.
@@ -77,7 +77,7 @@ Open solution file in Visual Studio. You should be able to see three projects.
 	<br/>
 	<img src="Documentation/Images/VS-003A.png" alt="Visual Studio" /> 
 	<br/> 
-	* **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
+	*  **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
 	<br/>
 3. **OktaLogin**: This is a MVC Web application that uses Okta Sign-in widget for user authentication.
 	* It is server-side MVC Web application
@@ -90,7 +90,7 @@ Open solution file in Visual Studio. You should be able to see three projects.
 	<br/>
 	<img src="Documentation/Images/VS-004A.png" alt="Visual Studio" /> 
 	<br/> 
-	* **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
+	*  **Note**: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
 	<br/>
 # D. Setting up Okta's Preview Sandbox<a id="sec-4" name="sec-4"></a>
 
