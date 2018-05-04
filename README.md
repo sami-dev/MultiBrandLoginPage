@@ -40,17 +40,12 @@ software and services below:
 
 
 # C. Build MVC Web Applications<a id="sec-3" name="sec-3"></a>
+Okta.Clients 
+
+
 TODO - Deployment Instructions for Web Applications
 List of three apps. Description of each app.
 Description of code to make it multi-branded login page
-App Settings - Web.Config for each project
-OIDC - Notification handler for Startup file 
-Normally, OIDC will determine brand from hostname. For this demo, we will use Id 
-SAML2: Startup - SecurityIdentityProvider
-
-Login Pages: Map Relay State to redirect URL
-SignIn Controller - Send relaystate back to Authorization server
-MVC App - stylesheets for each brand - responsive design - internationalized - Okta Sign-in widget support internationalization 
 
 # D. Setting up Okta's Preview Sandbox<a id="sec-4" name="sec-4"></a>
 
@@ -282,7 +277,7 @@ Lets first add OpenID connect branded Web Application.
 	* Platform: Web
 	* Sign on Method: OpenID Connect
 	<br/>
-	<img src="Documentation/Images/App-003.png" alt="Add Application"/>
+	<img src="Documentation/Images/App-003A.png" alt="Add Application"/>
 	<br/>
 - Provide OpenID Connect Application Integration details
 
@@ -365,7 +360,7 @@ Now, we will configure an OpenID Connect Client Proxy Application. This will be 
 	* Platform: Web
 	* Sign on Method: OpenID Connect
 	<br/>
-	<img src="Documentation/Images/App-003.png" alt="Add Application"/>
+	<img src="Documentation/Images/App-003A.png" alt="Add Application"/>
 	<br/>
  
 - Provide Application Name and Logo
@@ -383,7 +378,7 @@ Now, we will configure an OpenID Connect Client Proxy Application. This will be 
 	<br/>
 	* Allowed Grant Type: [checked]Authorization Code
 	<br/>
-	<img src="Documentation/Images/App-015.png" alt="Add Application"/>
+	<img src="Documentation/Images/App-015A.png" alt="Add Application"/>
 	<br/>
 	<br/>
 	<img src="Documentation/Images/App-016A.png" alt="Add Application"/>
@@ -410,7 +405,7 @@ For SAML branded application, we will have to create separate configuration for 
 	* Platform: Web
 	* Sign on Method: SAML 2.0
 	<br/>
-	<img src="Documentation/Images/App-018.png" alt="Add Application"/>
+	<img src="Documentation/Images/App-018A.png" alt="Add Application"/>
 	<br/> 
 - SAML Integration
 	* Provide App Name: SAML2 Green WebApp
@@ -477,18 +472,15 @@ For SAML branded application, we will have to create separate configuration for 
 	<br/>
 	<img src="Documentation/Images/App-023.png" alt="Add Application"/>
 	<br/>
-- Configure Login Page URL: Provide Login Page URL for Green Brand SAML Application. This link will include client ID for Proxy OpenID Connect application
+- Configure Login Page URL: Provide Login Page URL for Green Brand SAML Application. This link will include: 
 
-	* For Example:	
-	https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize?client_id=0oaeve25ssteDW65b0h7&redirect_uri=https://oktane2018saml2.azurewebsites.net/SignIn/Link?Brand=GREEN&response_mode=form_post&response_type=code&scope=openid profile&state=dummy&nonce=dummy&idp=0oaeqowu70ha5M60s0h7
-	
-		* **client_id**: It is the Client ID for Proxy OpenID Connect App. 
-		* **redirect_uri** : It is the endpoint for SAML2 application that will issue Sign-in request.This URL must be defined as valid URL in Proxy app. 
-		* **idp**: It is the value for green branded login page (IdP).
-    	* **Authorize Endpoint**: First part is authorize end point of custom authorization server e.g. https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize
+	* **client_id**: It is the Client ID for Proxy OpenID Connect App. 
+	* **redirect_uri** : It is the endpoint for SAML2 application that will issue Sign-in request.This URL must be defined as valid URL in Proxy app. 
+	* **idp**: It is the value for green branded login page (IdP).
+    * **Authorize Endpoint**: First part is authorize end point of custom authorization server e.g. https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize
 
     <br/>
-	<img src="Documentation/Images/App-024.png" alt="Add Application"/>
+	<img src="Documentation/Images/App-024A.png" alt="Add Application"/>
 	<br/>
 - Assign group to application: Assign GreenBrand Group
 	<br/>
@@ -510,7 +502,7 @@ For SAML branded application, we will have to create separate configuration for 
 	* Platform: Web
 	* Sign on Method: SAML 2.0
 	<br/>
-	<img src="Documentation/Images/App-018.png" alt="Add Application"/>
+	<img src="Documentation/Images/App-018A.png" alt="Add Application"/>
 	<br/> 
 - SAML Integration:
 	* Provide App Name: SAML2 Blue WebApp
@@ -577,18 +569,15 @@ For SAML branded application, we will have to create separate configuration for 
 	<br/>
 	<img src="Documentation/Images/App-023.png" alt="Add Application"/>
 	<br/>
-- Configure Login Page URL: Provide Login Page URL for Green Brand SAML Application.
-
-	* This link will include client ID for Proxy OpenID Connect application
-
-	* For Example:
-	https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize?client_id=0oaeve25ssteDW65b0h7&redirect_uri=https://oktane2018saml2.azurewebsites.net/SignIn/Link?Brand=BLUE&response_mode=form_post&response_type=code&scope=openid profile&state=dummy&nonce=dummy&idp=0oaeqqyn5fpDNZHwh0h7
-		* **client_id**: It is the Client ID for Proxy OpenID Connect App. 
-		* **redirect_uri** : It is the endpoint for SAML2 application that will issue Sign-in request.This URL must be defined as valid URL in Proxy app. 
-		* **idp**: It is the value for green branded login page (IdP).
-    	* **Authorize Endpoint**: First part is authorize end point of custom authorization server e.g. https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize
+- Configure Login Page URL: Provide Login Page URL for Blue Brand SAML Application. This link will include:
+	* **client_id**: It is the Client ID for Proxy OpenID Connect App. 
+	* **redirect_uri** : It is the endpoint for SAML2 application that will issue Sign-in request.This URL must be defined as valid URL in Proxy app. 
+	* **idp**: It is the value for green branded login page (IdP).
+    * **Authorize Endpoint**: First part is authorize end point of custom authorization server e.g. https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize
 	<br/>
-	<img src="Documentation/Images/App-028.png" alt="Add Application"/>
+	<br/>
+	<img src="Documentation/Images/App-028A.png" alt="Add Application"/>
+	<br/>
 	<br/>
 - Assign group to application: Assign BlueBrand Group
 	<br/>
@@ -596,8 +585,8 @@ For SAML branded application, we will have to create separate configuration for 
 	<br/>
 
 ### 6.5 Configure SAML 2.0 Okta Application ###
-For SAML branded application, we will have to create separate configuration for each brand. Now, we will add SAML 2.0 Okta application (that will show default Okta login page).
-[MM TODO]: This will not use any of the custom login page. 
+For SAML branded application, we will have to create separate configuration for each brand. Now, we will add SAML 2.0 Okta application that will show default Okta login page.
+This application will not use any of the custom login pages. 
 
 - Click on **Add Application** button
 	<br/>
@@ -691,6 +680,15 @@ For SAML branded application, we will have to create separate configuration for 
 
 # E. Configure, Deploy and Run Web Applications<a id="sec-5" name="sec-5"></a>
 TODO - Run and Test Web Applications
+App Settings - Web.Config for each project
+OIDC - Notification handler for Startup file 
+Normally, OIDC will determine brand from hostname. For this demo, we will use Id 
+SAML2: Startup - SecurityIdentityProvider
+
+Login Pages: Map Relay State to redirect URL
+SignIn Controller - Send relaystate back to Authorization server
+MVC App - stylesheets for each brand - responsive design - internationalized - Okta Sign-in widget support internationalization 
+
 Sections - for WebConfig
 2 Apps - Unprotected, Login page and User profile page (for each)
 Azure - deployment
