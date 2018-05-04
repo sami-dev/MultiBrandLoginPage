@@ -50,39 +50,39 @@ Open solution file in Visual Studio. You should be able to see three projects an
 1. **Okta.Clients.OpenIdConnect**: This is a sample **OpenID Connect** MVC Web application that demonstrate the use of branded login pages for a single Okta org.
 	* It is a sample server-side Web application.
 	* It uses Microsoft.Owin Middleware for OpenID Connect protocol implementation.
-	<br/>
-	<img src="Documentation/Images/VS-002.png" alt="Visual Studio" /> 
-	<br/>
+		<br/>
+		<img src="Documentation/Images/VS-002.png" alt="Visual Studio" /> 
+		<br/>
 	* User is authenticated via selected branded login page 
 	* Two brands are used in this sample: (a) Green Brand; and (b) Blue Brand  	
 	* You can run this project locally (localhost) or publish this application on Microsoft Azure. 
-	<br/>
-	<img src="Documentation/Images/VS-002A.png" alt="Visual Studio" /> 
-	<br/>
-	* Set **Okta.Clients.OpenIdConnect** project as StartUp project and run application and you will see "Choose a Branded Login Page" message
-	<br/>
-	<img src="Documentation/Images/VS-002B1.png" alt="Visual Studio" width="800" /> 
-	<br/>
-	*  <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section 5</a>
-	<br/>
+		<br/>
+		<img src="Documentation/Images/VS-002A.png" alt="Visual Studio" /> 
+		<br/>
+	* Set <b>Okta.Clients.OpenIdConnect</b> project as StartUp project and run application and you will see "Okta Multi-Branded Login Pages" page.
+		<br/>
+		<img src="Documentation/Images/VS-002B1.png" alt="Visual Studio" width="800" /> 
+		<br/>
+	* <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section E</a>
+		<br/>
 2. **Okta.Clients.SAML2**: This is a sample **SAML 2.0** MVC Web application that demonstrate the use of branded login pages for a single Okta org.
 	* It is a sample server-side Web application.
 	* It uses Sustainsys.Saml2 NuGet package for SAML2 protocol implementation. 
-	<br/>
-	<img src="Documentation/Images/VS-003.png" alt="Visual Studio" /> 
-	<br/>
+		<br/>
+		<img src="Documentation/Images/VS-003.png" alt="Visual Studio" /> 
+		<br/>
 	* User is authenticated via branded login pages. 
 	* Two brands are used in this sample: (a) Green Brand; and (b) Blue Brand
 	* You can run this project locally (localhost) or publish this application on Microsoft Azure.
-	<br/>
-	<img src="Documentation/Images/VS-003A.png" alt="Visual Studio" /> 
-	<br/> 
-	* Set **Okta.Clients.SAML2** project as StartUp project and run application and you will see "Choose a Branded Login Page" message
+		<br/>
+		<img src="Documentation/Images/VS-003A.png" alt="Visual Studio" /> 
+		<br/> 
+	* Set **Okta.Clients.SAML2** project as StartUp project and run application and you will see "Okta Multi-Branded Login Pages" page.
 	*  <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section E</a>
-	<br/>
-	<img src="Documentation/Images/VS-003B.png" alt="Visual Studio" width="800" /> 
-	<br/>
-	<br/>
+		<br/>
+		<img src="Documentation/Images/VS-003B.png" alt="Visual Studio" width="800" /> 
+		<br/>
+		<br/>
 3. **OktaLogin**: This is a MVC Web application that uses Okta Sign-in widget for user authentication.
 	* It is server-side MVC Web application
 	* It uses Okta Sign-In Widget for user authentication
@@ -91,11 +91,11 @@ Open solution file in Visual Studio. You should be able to see three projects an
 	* For each brand, there is a separate style sheet: (a) Style-Blue.css; and (b) Style-Green.css 
 	* It also supports multiple languages (System.Globalization)
 	* You can run this project locally (localhost) or publish this application on Microsoft Azure. There are several advantages on hosting on Azure including identifying brand based on hostname.    
-	<br/>
-	<img src="Documentation/Images/VS-004A.png" alt="Visual Studio" /> 
-	<br/> 
-	*  <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section E</a>
-	<br/>
+		<br/>
+		<img src="Documentation/Images/VS-004A.png" alt="Visual Studio" /> 
+		<br/> 
+	* <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section E</a>
+		<br/>
 # D. Setting up Okta's Preview Sandbox<a id="sec-4" name="sec-4"></a>
 
 1. Create a Custom Authorization Server
