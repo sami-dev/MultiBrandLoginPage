@@ -14,12 +14,10 @@
 </div>
 
 # A. Introduction<a id="sec-1" name="sec-1"></a>
-[<a href="#top#">Go Back to Top</a>]
-
 **TODO**
+[<a href="#top">Back to Top</a>]
 
 # B. Prerequisites<a id="sec-2" name="sec-2"></a>
-[<a href="#top#">Go Back to Top</a>]
 
 Before you get started, you'll need to install or set up the
 software and services below:
@@ -43,10 +41,10 @@ software and services below:
 	<br/>
 	<img src="Documentation/Images/Azure-001.PNG" alt="Microsoft Azure Free" width="800"/> 
 	<br/>
-
-
+<br/>
+[<a href="#top">Back to Top</a>]
+<br/>
 # C. Build MVC Web Applications<a id="sec-3" name="sec-3"></a>
-[<a href="#top#">Go Back to Top</a>]
 
 The Visual Studio solution that you have downloaded contains three projects.
 Open solution file in Visual Studio. You should be able to see three projects and Build Solution.
@@ -111,6 +109,10 @@ Open solution file in Visual Studio. You should be able to see three projects an
 		<br/>
 	* <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section E</a>
 		<br/>
+<br/>
+[<a href="#top#">Back to Top</a>]
+<br/>
+
 # D. Setting up Okta's Preview Sandbox<a id="sec-4" name="sec-4"></a>
 
 1. Create a Custom Authorization Server
@@ -741,20 +743,55 @@ This application will not use any of the custom login pages.
 	<img src="Documentation/Images/App-033.png" alt="Add Application"/>
 	<br/>
 
+<br/>
+[<a href="#top#">Back to Top</a>]
+<br/>
 
 # E. Configure, Deploy and Run Web Applications<a id="sec-5" name="sec-5"></a>
-[<a href="#top#">Go Back to Top</a>]
 
+Now, we will update/review configuration settings for each project based on our Okta's Sandbox settings. It will give us better understanding of configuring Multi-branded application against single Okta Org. After that we should be able to publish/run on Microsoft Azure or run projects locally.
+
+1. **OktaLogin**: First we will update configuration settings for OktaLogin project and run it locally or publish on Microsoft Azure.
+Login Pages: Map Relay State to redirect URL
+SignIn Controller - Send relaystate back to Authorization server
+MVC App - stylesheets for each brand - responsive design - internationalized - Okta Sign-in widget support internationalization 
+
+2. **Okta.Clients.OpenIdConnect**: Lets update/review configuration settings for OpenID Connect client application.
+	* Update **appSettings** section in **Web.config**
+		* ida:Authority: Your OKta's Preview Sandbox environment e.g. https://dev-######.oktapreview.com
+		* ida:AuthorizationServer: Custom Authorization server e.g. https://dev-######.oktapreview.com/oauth2/auseqf1tfe6bvxxxxxxx
+		* ida:ClientId: Client ID for this application
+		* ida:ClientSecret: Client secret for this application
+		* ida:RedirectUri: Redirect URL after user authentication e.g. https://hostname.com/
+		* idp:BlueBrand: Okta "Identity Provider"'s Assertion Consumer Service URL linked with Blue Brand
+		* idp:GreenBrand: Okta "Identity Provider"'s Assertion Consumer Service URL linked with Green Brand.
+		<br/>
+		<img src="Documentation/Images/E-001.png" alt="Add Application"/>
+		<br/>
+	* Review **IdentityProviderManagement.cs** utility class 
+		* This purpose of this utility class is to determine application brand based on hostname or brand query string parameter.
+		* If application is hosted on branded domain names e.g. app1.greenbrand.com and app1.bluebrand.com then this class can dynamically determine brand based on hostname.
+		* If application is not hosted on branded domain names then brand can be passed as query string parameter e.g. app1.azurewebsites.net?brand=green or app1.azurewebsites.net?brand=blue
+		<br/>
+		<img src="Documentation/Images/E-001B.png" alt="Add Application"/>
+		<br/>		
+	* Review OpenID Connect Notification handler defined in **Startup.Auth.cs** under **App_Start**
+		 * Review OnRedirectToIdentityProvider Notfication handler. We have to switch IdP value based on selected brand. Normally, brand will be determined based on hostname of application. For Example: app1.greenbrand.com means brand is green then we have to pass green brand IdP value to Okta's authorization server
+		 <br/>
+		 <img src="Documentation/Images/E-002.png" alt="Add Application"/>
+		 <br/>
+
+3. **Okta.Clients.SAML2**: 
 TODO - Run and Test Web Applications
 App Settings - Web.Config for each project
 OIDC - Notification handler for Startup file 
 Normally, OIDC will determine brand from hostname. For this demo, we will use Id 
 SAML2: Startup - SecurityIdentityProvider
-
-Login Pages: Map Relay State to redirect URL
-SignIn Controller - Send relaystate back to Authorization server
-MVC App - stylesheets for each brand - responsive design - internationalized - Okta Sign-in widget support internationalization 
-
 Sections - for WebConfig
 2 Apps - Unprotected, Login page and User profile page (for each)
 Azure - deployment
+
+
+<br/>
+[<a href="#top#">Back to Top</a>]
+<br/>
