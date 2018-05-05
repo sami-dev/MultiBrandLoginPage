@@ -1,7 +1,7 @@
 <h1>Managing Multiple Brand Experiences with a Single Okta Org</h1>
 
-<div id="table-of-contents">
-<h2>Table of Contents</font></h2>
+<div id="top">
+<h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#sec-1">A. Introduction</a></li>
@@ -14,9 +14,13 @@
 </div>
 
 # A. Introduction<a id="sec-1" name="sec-1"></a>
+[<a href="#top#">Go Back to Top</a>]
+
 **TODO**
 
 # B. Prerequisites<a id="sec-2" name="sec-2"></a>
+[<a href="#top#">Go Back to Top</a>]
+
 Before you get started, you'll need to install or set up the
 software and services below:
 
@@ -42,6 +46,8 @@ software and services below:
 
 
 # C. Build MVC Web Applications<a id="sec-3" name="sec-3"></a>
+[<a href="#top#">Go Back to Top</a>]
+
 The Visual Studio solution that you have downloaded contains three projects.
 Open solution file in Visual Studio. You should be able to see three projects and Build Solution.
 	<br/>
@@ -87,7 +93,7 @@ Open solution file in Visual Studio. You should be able to see three projects an
 		<br/>
 3. **OktaLogin**: This is a MVC Web application that uses Okta Sign-in widget for user authentication.
 	* It is server-side MVC Web application
-	* It uses <b>Okta Sign-In Widget</b> for user authentication. The Okta Sign-In Widget is a JavaScript library that gives you a fully-featured and customizable login experience which can be used to authenticate users on any website <a href="https://developer.okta.com/code/javascript/okta_sign-in_widget" target="_blank">Okta Sign-IN Widget Guide</a>	
+	* It uses <b>Okta Sign-In Widget</b> for user authentication. The Okta Sign-In Widget is a JavaScript library that gives you a fully-featured and customizable login experience which can be used to authenticate users on any website. For details, see <a href="https://developer.okta.com/code/javascript/okta_sign-in_widget" target="_blank">Okta Sign-In Widget Guide</a>	
 	* Two brands are used in this sample: (a) Green Brand; and (b) Blue Brand
 	* For each brand, there is a separate style sheet: (a) Style-Blue.css; and (b) Style-Green.css 
 	* It also supports multiple languages (System.Globalization)
@@ -737,6 +743,8 @@ This application will not use any of the custom login pages.
 
 
 # E. Configure, Deploy and Run Web Applications<a id="sec-5" name="sec-5"></a>
+[<a href="#top#">Go Back to Top</a>]
+
 TODO - Run and Test Web Applications
 App Settings - Web.Config for each project
 OIDC - Notification handler for Startup file 
