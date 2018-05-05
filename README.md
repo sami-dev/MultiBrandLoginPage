@@ -1,5 +1,7 @@
+<H1><font size="7" color="#e5474b">Managing Multiple Brand Experiences with a Single Okta Org</font></H1>
+
 <div id="table-of-contents">
-<h2>Table of Contents</h2>
+<h1><font color="e5474b">Table of Contents</font></h1>
 <div id="text-table-of-contents">
 <ul>
 <li><a href="#sec-1">A. Introduction</a></li>
@@ -11,10 +13,10 @@
 </div>
 </div>
 
-# A. Introduction<a id="sec-1" name="sec-1"></a>
+# <font color="e5474b">A. Introduction</font><a id="sec-1" name="sec-1"></a>
 **TODO**
 
-# B. Prerequisites<a id="sec-2" name="sec-2"></a>
+# <font color="e5474b">B. Prerequisites</font><a id="sec-2" name="sec-2"></a>
 Before you get started, you'll need to install or set up the
 software and services below:
 
@@ -39,7 +41,7 @@ software and services below:
 	<br/>
 
 
-# C. Build MVC Web Applications<a id="sec-3" name="sec-3"></a>
+# <font color="e5474b">C. Build MVC Web Applications</font><a id="sec-3" name="sec-3"></a>
 The Visual Studio solution that you have downloaded contains three projects.
 Open solution file in Visual Studio. You should be able to see three projects and Build Solution.
 	<br/>
@@ -103,7 +105,7 @@ Open solution file in Visual Studio. You should be able to see three projects an
 		<br/>
 	* <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section E</a>
 		<br/>
-# D. Setting up Okta's Preview Sandbox<a id="sec-4" name="sec-4"></a>
+# <font color="e5474b">D. Setting up Okta's Preview Sandbox</font><a id="sec-4" name="sec-4"></a>
 
 1. Create a Custom Authorization Server
 2. Create Identity Providers for Each Branded Login Page
@@ -112,12 +114,12 @@ Open solution file in Visual Studio. You should be able to see three projects an
 5. Create Groups
 6. Add OpenID Connect and SAML 2.0 Applications
 
-## Step 1. Create a Custom Authorization Server ##
+## <font color="#6666ff">Step 1. Create a Custom Authorization Server</font> ##
 
 Okta allows you to create custom OAuth 2.0 authorization servers. Create a new custom authorization server for this application.
 
-1. Go to **Security → API → Authorization Servers**
-2. Click on **"Add authorization server"** button
+1. Go to <font color="#e5474b">**Security → API → Authorization Servers**</font>
+2. Click on <font color="#e5474b">**"Add authorization server"**</font> button
 
 	<img src="Documentation/Images/AuthServer-001.png" alt="Add Authorization Server" />
 
@@ -135,16 +137,16 @@ Okta allows you to create custom OAuth 2.0 authorization servers. Create a new c
 
 	By default, there is no access policies. We will add access policies for our sample application later.
 
-## Step 2. Create Identity Providers for Each Branded Login Page ##
+## <font color="#6666ff">Step 2. Create Identity Providers for Each Branded Login Page</font> ##
 Okta allows you to create Identity Providers to manage federations with external Identity Providers (IdP). Each identity provider (IdP) requires some setup. For this application, we will create an Identity Provider for each branded login page.
 
-1. Go to **Security → API → Identity Providers**
+1. Go to <font color="#e5474b">**Security → API → Identity Providers**</font>
 	<img src="Documentation/Images/IdP-001.png" alt="Add Identity Provider"/>
 
 ### 2.1	Create Identity Provider for "Green Brand Login Page" ###
 This is for Green Brand. This will not be acted as true identity provider. This will not do traditional SAML 2.0 Request/Response (as SAML2 functionaliy is never used). Its only job to host login page, which contains the sign-in widget. 
  
-1. Click on **"Add Identity Provider"** button
+1. Click on <font color="#e5474b">**"Add Identity Provider"**</font> button
 2. Select “Add SAML 2.0 IdP”
 	<br/>
 	<img src="Documentation/Images/IdP-002A.png" alt="Add Identity Provider"/>
@@ -177,7 +179,7 @@ This is for Green Brand. This will not be acted as true identity provider. This 
 ### 2.2	Create Identity Provider for "Blue Brand Login Page" ###
 This is for Blue Brand. This will not be acted as true identity provider. This will not do traditional SAML 2.0 Request/Response (as SAML2 functionaliy is never used). Its only job to host login page, which contains the sign-in widget. 
 
-1. Click on **"Add Identity Provider"** button
+1. Click on <font color="#e5474b">**"Add Identity Provider"**</font> button
 2. Select “Add SAML 2.0 IdP”
 	<img src="Documentation/Images/IdP-002A.png" alt="Add Identity Provider"/>
 3. Provide fields for new Identity Provider
@@ -206,26 +208,26 @@ This is for Blue Brand. This will not be acted as true identity provider. This w
 	<br/>
 	* Note: The last highlighted part of Assertion Consumer Service (ACS) URL provides **idp** value. This value be will be sent as **idp** query string parameter value to pick green branded login page.
 
-## Step 3. Enabling CORS (Trusted Origins) ##
+## <font color="#6666ff">Step 3. Enabling CORS (Trusted Origins)</font> ##
 In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your websites to make an XHR to the Okta API with the Okta session cookie. Every website origin must be explicitly permitted via the administrator UI for CORS. You have to enable CORS for the Branded Login pages.
 
-**Go to Security → API → Trusted Origins**
+**Go to <font color="#e5474b">Security → API → Trusted Origins**</font>
 
 ### 3.1 Add CORS for Green Brand Login Page ###
-- Click on **Add Origin**
+- Click on <font color="#e5474b">**Add Origin**</font>
 	* Name: Green Brand Login
 	* Origin URL: Provide Branded Login Page URL e.g. https://demo.login.greenbrand.com
 	* Type: CORS [Checked] Redirect [Unchecked]
-- Click on **Save** button
+- Click on <font color="#e5474b">**Save**</font> button
 	<br/>
 	<img src="Documentation/Images/Cors-001.png" alt="Add CORS"/>
 	<br/>
 ### 3.2 Add CORS for Blue Brand Login Page ###
-- Click on **Add Origin**
+- Click on <font color="#e5474b">**Add Origin**</font>
 	* Name: Blue Brand Login
 	* Origin URL: Provide Branded Login Page URL e.g. https://demo.login.bluebrand.com
 	* Type: CORS [Checked] Redirect [Unchecked]
-- Click on **Save** button
+- Click on <font color="#e5474b">**Save**</font> button
 	<br/>
 	<img src="Documentation/Images/Cors-002.png" alt="Add CORS"/>
 	<br/>
@@ -234,15 +236,15 @@ In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your w
 	<img src="Documentation/Images/Cors-003.png" alt="Add CORS"/>
 	<br/>
 
-## Step 4. Create Test User Accounts for Each Brand (Add Person) ##
+## <font color="#6666ff">Step 4. Create Test User Accounts for Each Brand (Add Person)</font> ##
 Now, we will add two test accounts in Okta. Use the People page to add test users.
 
-Go to **Directory → People**
+Go to <font color="#e5474b">**Directory → People**</font>
 
 ### 4.1 Add Test User Account for Green Brand ###
 Enter a test user account for Green Brand. For Example: John.Doe@greenbrand.com
 
-- Click on **Add Person**
+- Click on <font color="#e5474b">**Add Person**</font>
 	* First Name: John
 	* Last Name: Doe
 	* Username: John.Doe@greenbrand.com
@@ -257,7 +259,7 @@ Enter a test user account for Green Brand. For Example: John.Doe@greenbrand.com
 ### 4.2 Add Test User Account for Blue Brand ###
 Enter a test user account for Green Brand. For Example: Jane.Doe@bluebrand.com
 
-- Click on **Add Person**
+- Click on <font color="#e5474b">**Add Person**</font>
 	* First Name: Jane
 	* Last Name: Doe
 	* Username: Jane.Doe@bluebrand.com
@@ -273,15 +275,15 @@ Enter a test user account for Green Brand. For Example: Jane.Doe@bluebrand.com
 	<img src="Documentation/Images/Person-003.png" alt="Add Person"/>
 	<br/>
 
-## Step 5. Create Groups ##
+## <font color="#6666ff">Step 5. Create Groups</font> ##
 Its easier to manage users and applications by creating groups. Now, we will create two brand groups and add test accounts to those groups. 
 
-Go to **Directory → Groups** 
+Go to <font color="#e5474b">**Directory → Groups**</font> 
 
 ### 5.1 Add GreenBrand Group ###
 Create a group for Green Brand users.
 
-- Click on **Add Group**
+- Click on <font color="#e5474b">**Add Group**</font>
 	* Name: GreenBrand Group
 	* Description: Users belong to Green Brand
 	<br/>
@@ -296,7 +298,7 @@ Create a group for Green Brand users.
 ### 5.2 Add BlueBrand Group ###
 Create a group for Blue Brand users.
 
-- Click on **Add Group**
+- Click on <font color="#e5474b">**Add Group**</font>
 	* Name: BlueBrand Group
 	* Description: Users belong to Blue Brand
 	<br/>
@@ -311,20 +313,20 @@ Create a group for Blue Brand users.
 	<img src="Documentation/Images/Groups-005.png" alt="Add Person"/>
 	<br/>
 
-## Step 6. Add OpenID Connect and SAML 2.0 Applications ##
+## <font color="#6666ff">Step 6. Add OpenID Connect and SAML 2.0 Applications</font> ##
 Okta allows you to configure OpenID Connect or SAML2 Web applications. 
 
-Go to **Applications → Applications**
+Go to <font color="#e5474b">**Applications → Applications**</font>
 
 
 ### 6.1 Add OpenID Connect Branded Application ###
 Lets first add OpenID connect branded Web Application.
 
-- Click on **Add Application** button
+- Click on <font color="#e5474b">**Add Application**</font> button
 	<br/>
 	<img src="Documentation/Images/App-001.png" alt="Add Application"/>
 	<br/>	
-- Click on **Create New App** button
+- Click on <font color="#e5474b">**Create New App**</font> button
 	<br/>
 	<img src="Documentation/Images/App-002.png" alt="Add Application"/>
 	<br/>
@@ -351,7 +353,7 @@ Lets first add OpenID connect branded Web Application.
 	* Select Grant Types: 
 		* Authorization Code
 		* Implicit (Hybrid) - Allow ID Token
-	* Click on **Save** button to save changes.
+	* Click on <font color="#e5474b">**Save**</font> button to save changes.
 	* Note: Client Credentials are needed for application configuration
 	<br/>
 	<img src="Documentation/Images/App-005A.png" alt="Add Application"/>
@@ -371,14 +373,14 @@ Lets first add OpenID connect branded Web Application.
 	<br/>
 - Add Access Policy for application:
 	* Go to Authorization Server.
-	* Go to **Security → API**
+	* Go to <font color="#e5474b">**Security → API**</font>
 	* Select Authorization server
 	<br/>
 	<img src="Documentation/Images/App-009.png" alt="Add Application"/>
 	<br/>
 - Go to Access Policies under Authorization Server
 	* Add New Access Policy (if not already exists)
-	* Click on **Add Policy** button.
+	* Click on <font color="#e5474b">**Add Policy**</font> button.
 	<br/>
 	<img src="Documentation/Images/App-010.png" alt="Add Application"/>
 	<br/>
@@ -386,8 +388,8 @@ Lets first add OpenID connect branded Web Application.
 
 	* Name: OpenID Connect WebApp Policy
 	* Description: Access Policy for OpenID Connect WebApp
-	* Select the **OpenID Connect Web App**
-	* Click on **Create Policy** button
+	* Select the <font color="#e5474b">**OpenID Connect Web App**</font>
+	* Click on <font color="#e5474b">**Create Policy**</font> button
 	<br/>
 	<img src="Documentation/Images/App-011.png" alt="Add Application"/>
 	<br/>
@@ -403,11 +405,11 @@ Lets first add OpenID connect branded Web Application.
 ### 6.2 Add OpenID Connect Client Proxy Application for SAML2 Applications ###
 Now, we will configure an OpenID Connect Client Proxy Application. This will be used as proxy for redirecting user to branded login page (for all SAML applications).
 
-- Click on **Add Application** button
+- Click on <font color="#e5474b">**Add Application**</font> button
 	<br/>
 	<img src="Documentation/Images/App-001.png" alt="Add Application"/>
 	<br/>	
-- Click on **Create New App** button
+- Click on <font color="#e5474b">**Create New App**</font> button
 	<br/>
 	<img src="Documentation/Images/App-002.png" alt="Add Application"/>
 	<br/>
@@ -448,11 +450,11 @@ Now, we will configure an OpenID Connect Client Proxy Application. This will be 
 ### 6.3 Configure SAML 2.0 Green Brand Application ###
 For SAML branded application, we will have to create separate configuration for each brand. Now, we will add SAML 2.0 Green Brand application.
 
-- Click on **Add Application** button
+- Click on <font color="#e5474b">**Add Application** </font>button
 	<br/>
 	<img src="Documentation/Images/App-001.png" alt="Add Application"/>
 	<br/>	
-- Click on **Create New App** button
+- Click on <font color="#e5474b">**Create New App**</font> button
 	<br/>
 	<img src="Documentation/Images/App-002.png" alt="Add Application"/>
 	<br/>
@@ -545,11 +547,11 @@ For SAML branded application, we will have to create separate configuration for 
 ### 6.4 Configure SAML 2.0 Blue Brand Application ###
 For SAML branded application, we will have to create separate configuration for each brand. Now, we will add SAML 2.0 Blue Brand application.
 
-- Click on **Add Application** button
+- Click on <font color="#e5474b">**Add Application**</font> button
 	<br/>
 	<img src="Documentation/Images/App-001.png" alt="Add Application"/>
 	<br/>	
-- Click on **Create New App** button
+- Click on <font color="#e5474b">**Create New App**</font> button
 	<br/>
 	<img src="Documentation/Images/App-002.png" alt="Add Application"/>
 	<br/>
@@ -644,11 +646,11 @@ For SAML branded application, we will have to create separate configuration for 
 For SAML branded application, we will have to create separate configuration for each brand. Now, we will add SAML 2.0 Okta application that will show default Okta login page.
 This application will not use any of the custom login pages. 
 
-- Click on **Add Application** button
+- Click on <font color="#e5474b">**Add Application**</font> button
 	<br/>
 	<img src="Documentation/Images/App-001.png" alt="Add Application"/>
 	<br/>	
-- Click on **Create New App** button
+- Click on <font color="#e5474b">**Create New App**</font> button
 	<br/>
 	<img src="Documentation/Images/App-002.png" alt="Add Application"/>
 	<br/>
@@ -734,7 +736,7 @@ This application will not use any of the custom login pages.
 	<br/>
 
 
-# E. Configure, Deploy and Run Web Applications<a id="sec-5" name="sec-5"></a>
+# <font color="e5474b">E. Configure, Deploy and Run Web Applications</font><a id="sec-5" name="sec-5"></a>
 TODO - Run and Test Web Applications
 App Settings - Web.Config for each project
 OIDC - Notification handler for Startup file 
