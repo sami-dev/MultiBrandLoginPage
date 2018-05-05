@@ -110,7 +110,7 @@ Open solution file in Visual Studio. You should be able to see three projects an
 	* <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section E</a>
 		<br/>
 <br/>
-[<a href="#top#">Back to Top</a>]
+[<a href="#top">Back to Top</a>]
 <br/>
 
 # D. Setting up Okta's Preview Sandbox<a id="sec-4" name="sec-4"></a>
@@ -744,7 +744,7 @@ This application will not use any of the custom login pages.
 	<br/>
 
 <br/>
-[<a href="#top#">Back to Top</a>]
+[<a href="#top">Back to Top</a>]
 <br/>
 
 # E. Configure, Deploy and Run Web Applications<a id="sec-5" name="sec-5"></a>
@@ -793,5 +793,5 @@ Azure - deployment
 
 
 <br/>
-[<a href="#top#">Back to Top</a>]
+[<a href="#top">Back to Top</a>]
 <br/>
