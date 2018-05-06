@@ -1,4 +1,4 @@
-<h1>Multiple Branded Login Experiences with a Single Okta Org</h1>
+<h1>Multiple Brand Login Experiences with a Single Okta Org</h1>
 
 <div id="top">
 <h3>Table of Contents</h3>
@@ -14,50 +14,52 @@
 </div>
 
 # A. Introduction<a id="sec-1" name="sec-1"></a>
-In multi-brand companies, there is a common requirement to have **multiple brand Experiences for all protected applications** . A different theme is required for each brand. For Example: A blue theme for Blue Brand and a green theme for Green Brand. Dynamic branding is ideal for multi-brand companies. You can create a single login page that determines which brand appears at run time. All brands are served from the same login page and integrated with single identity provider.
+In multi-brand companies, there is often need to have **multiple brand experiences for all applications** . A different theme is required for each brand. For Example: A blue theme for Blue Brand and a green theme for Green Brand. Dynamic branding is ideal for multi-brand companies. You can create a single login page that determines which brand appears at run time. All brands are served from the same login page and integrated with single Identity Provider.
 
-When you are designing the authentication experience for protected applications in your organization, you have to choose whether the user authentication flow will use **Universal/Central (More secured way of user authentication)** or **Application specific Embedded Login page (Less secured way of user authentication)**. Universal Login page provided by Identity provider is always a more secured way of user authentication. In case of a Universal Login page, when the users try to log in they are redirected to a central Login page hosted by Identity Provider, through which authentication is performed, and then they are redirected back to the protected application (e.g. Google Apps or Microsoft Office365 Apps).
+Also, when you are designing the authentication experience for brand applications in your organization, you have to choose whether the user authentication flow will use **Universal/Central (More secured way of user authentication)** or **Application specific Embedded Login page (Less secured way of user authentication)**. Universal Login page provided by Identity provider is always a more secured way of user authentication. In case of a Universal Login page, when the users try to log in they are redirected to a central Login page hosted by Identity Provider, through which authentication is performed, and then they are redirected back to the protected application (e.g. Google Apps or Microsoft Office365 Apps).
 
-In our scenario, **MM Corporation** has a single user base to handle its two brands, **Blue brand** and **Green brand**. The corporation uses dynamic branding to customize the login experience for each brand. When users click login link on each protected application, he/she will be presented with a login page based on the brand indicated in the login URL. Login page is hosted on central location. User is authenticated against a single Identity Provider and redirected back to protected application after user authentication. Sign-in and Sign-out experiences are implemented via standardized sign-in protocols.
+In our scenario, **MM Corporation** has a single user base to handle its two brands, **Blue brand** and **Green brand**. The corporation uses dynamic branding to customize the applications (including login experience) for each brand. When users click login link on each protected application, he/she will be presented with a login page based on the brand indicated in the login URL (dynamic branding). Login page is hosted on central location. User is authenticated against a single Identity Provider and redirected back to protected brand application after user authentication. Sign-in and Sign-out experiences are implemented via standardized sign-in protocols.
 
-If you are also designing a solution for multi-brand company then the solution provided in this GitHub repository is applicable to you. This solution applies if you have selected Okta as an Identity Management System (Identity Provider) for your organization.
+If you are also designing a solution for multi-brand company then the solution provided in this GitHub repository is applicable to you. This solution applies if you have selected **Okta as an Identity Management System (Identity Provider)** for your organization.
 
 ## Summary of Requirements:
-1. Universal Login page hosted at central location (not provided by each application)
-2. Multiple Brand Experiences with a Single Okta Org. Each brand could have different style for Login page e.g. Green Brand and Blue Brand.
-3. Applications interact with Identity Management System through Standardized Sign-In Protocols such as OpenID Connect, OAuth 2.0 and SAML 2.0
-4. Single Sign On (SSO)  is required between protected applications.
+Here is summary of requirements for a multi-brand company login page:
 
-## Authentication Experiences Provided by Okta:
+1. Universal Login page hosted at central location (not provided by each application)
+2. Multiple Brand Experiences with a Single Okta Org. Each brand could have different style for Login page e.g. Green Brand style and Blue Brand style.
+3. Applications interact with Identity Management System through Standardized Sign-In Protocols such as OpenID Connect, OAuth 2.0 and SAML 2.0
+4. Single Sign On (SSO)  is required between protected brand applications.
+
+## Authentication Experiences/Solutions Provided by Okta:
 ### Solution 1. Customize Okta's Universal Login page for your Org
 * Issues with this solution: 
 	* Currently, there are limited customization options available for default Okta login page i.e. <a href="#">https://orgdomain.okta.com/login/default</a>  
-	* Cannot have multiple brand experiences for application. This solution is not applicable to your organization if you want have multiple brand experiences for a single Okta Org. 
+	* Cannot have multiple brand login experiences for application. This solution is not applicable to your organization if you want have multiple brand experiences for a single Okta Org. 
 	
 ### Solution 2. Each application creates its own Login page using <a href="https://developer.okta.com/code/javascript/okta_sign-in_widget" target="_blank">Okta Sign-In Widget</a>.
 * Issues with this solution: 
-	* Embedded login page is always less secure
+	* Embedded application login page is always less secure
 	* Does not follow standardized Sign-In protocols such as OpenID Connect, OAuth 2.0 and SAML 2.0
 	* Each application will have to create its own login page (more work and less consistent)
-	* Application developeres can easily access/store user's credentials from javascript widget 
+	* Application developeres can easily access/store user's credentials from javascript widget (less secure) 
 ### Solution 3. Each application creates its own Login page via <a href="https://developer.okta.com/docs/api/resources/authn" target="_blank">Okta's Authentication API</a>
 * Issues with this solution: 
 	* Embedded login page is always less secured way of user authentication
 	* Does not follow standardized Sign-In protocols such as OpenID Connect, OAuth 2.0 and SAML 2.0
 	* Each application will have to create its own login page (more work and less consistent)
-	* Application developeres can easily access/store user's credentials from Login page
-	* Single Sign-on is not possible for applications. 
+	* Application developeres can easily access/store user's credentials from Login page (less secure)
+	* Single Sign-on is not possible for brand applications. 
 
 ## Features of Multiple Brand Login Page Solution Provided in this Repository
 1. **Multiple Branded Login Experiences with a Single Okta Org**: Login page supports multiple brands for a single okta org. For Example: Green brand and Blue brand.
-2. **Dynamic Branding for Multiple Brands**: Dynamic branding is very useful for multi-brand companies. You can create a single login page that determines which brand appears at run time (based on hostname or query string parameter). All brands are served from the same login page that uses single Okta org. We will create separate style sheet for each brand e.g. Style-Blue.css, Style-Green.css, etc.
-3. **Customizable Login Page**: Fully customizable Login page. For each brand, you can customize based on brand theme using brand style sheet and Okta Sign-In widget.  
-4. **Responsive Login Page Design**: Login Page is also built with “Responsive Design”, so Login Page renders well on a variety of devices and screen sizes. Responsive design allows login page to adapt to the device users are viewing it on.
+2. **Dynamic Branding for Multiple Brands**: Dynamic branding is very useful for multi-brand companies. You can create a single login page that determines which brand appears at run time (based on hostname or query string parameter). All brands are served from the same login page that uses single Okta org. We will create separate style sheet for each brand e.g. Blue Style and Green Style
+3. **Customizable Login Page**: Fully customizable Login page. For each brand, you can customize based on brand theme using brand style sheet and by using Okta Sign-In widget.  
+4. **Responsive Login Page Design**: Login Page is also built with “Responsive Design”, so Login Page renders well on a variety of devices and screen sizes. Responsive design allows Login page to adapt to the device users are viewing it on.
 5. **Applications interface with Login Page using Standardized Sign-In Protocols**: Login Page work with the following standardized Sign In protocols: OpenID Connect, OAuth 2.0 and SAML 2.0. By using standardized sign in protocols Applications are loosely coupled with the Identity Management System. Standard Sign-In protocols also issue security tokens (JWT and SAML2.0) that allow the application to call protected APIs. REST APIs are protected with OAuth2.0 and require JWT tokens to be passed.
 6. **Single Sign-On**: Applications issue “passive” authentication requests to the Login Page/Identity Management System using URL redirection (HTTP 302). After authentication by the user a session cookie is set in the user’s browser cookie cache. This enables one of the most important features of the Identity Management System, the ability of the user to “Single Sign-On” between different applications in the same Identity Realm. Users only need to enter their credentials once when moving from one application to another.
-7. **More Secured** – Multiple Brand Universal Login Page is hosted on central location to keep your attack surface as small as possible and minimize the risk to the users and applications in the Identity Realm. Developers who create the Login Page are trained and specialize in a particular Identity Management System and are trusted. Application developers who either by malicious intent or ignorance of the identity management system do not have that ability, they put user identities/credentials and the applications/data at risk.
-8. **Ease of use**: Login Page is built using **Okta Sign-In widget** and contains all features provided by Okta e.g. Forgot Password, Unlock Account, Help, Multi-Factor Authentication. If new features are added by the Identity Management System provider then they are immediately incorporated and available in the Login Page. 
-9. **Provides a consistent user experience for each brand**: Brand Login Page always appears exactly the same and at the same URL regardless of the application the user is authenticating for. User always knows which set of credentials to enter because it’s the same Brand Login Page.
+7. **Universal Login Page (more secured)** – Multiple Brand Universal Login Page is hosted on central location to keep your attack surface as small as possible and minimize the risk to the users and applications in the Identity Realm. Developers who create the Login Page are trained and specialize in a particular Identity Management System and are trusted. Application developers who either by malicious intent or ignorance of the identity management system do not have that ability, they put user identities/credentials and the applications/data at risk.
+8. **Simpler Maintainability**: Universal Login page is easy to maintain. Login Page is built using **Okta Sign-In widget** and contains all features provided by Okta e.g. Forgot Password, Unlock Account, Help, **Multi-Factor Authentication**. If new features are added by the Identity Management System provider then they are immediately incorporated and available in the Login Page. 
+9. **Provides a consistent user experience for each brand**: Multi-brand Login Page always appears exactly the same and at the same URL regardless of the application the user is authenticating for each brand. User always knows which set of credentials to enter because it’s the same Brand Login Page.
 
 
 [<a href="#top">Back to Top</a>]
