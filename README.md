@@ -20,7 +20,7 @@ Also, when you are designing the authentication experience for brand application
 
 In our scenario, **MM Corporation** has a single user base to handle its two brands, **Blue brand** and **Green brand**. The corporation uses dynamic branding to customize the applications (including login experience) for each brand. When users click login link on each protected application, he/she will be presented with a login page based on the brand indicated in the login URL (dynamic branding). Login page is hosted on central location. User is authenticated against a single Identity Provider and redirected back to protected brand application after user authentication. Sign-in and Sign-out experiences are implemented via standardized sign-in protocols.
 
-If you are also designing a solution for multi-brand company then the solution provided in this GitHub repository is applicable to you. This solution applies if you have selected **Okta as an Identity Management System (Identity Provider)** for your organization.
+If you are also designing a solution for a multi-brand company then the solution provided in this GitHub repository is applicable to you. This solution applies if you have selected **Okta as an Identity Management System (Identity Provider)** for your organization.
 
 ## Summary of Requirements:
 Here is summary of requirements for a multi-brand company login page:
