@@ -1,5 +1,6 @@
 <h1>Multiple Brand Login Experiences with a Single Okta Org</h1>
 
+<h3>Authors: Mark Milchuk, Sami Abdul</h3>
 <div id="top">
 <h3>Table of Contents</h3>
 <div id="text-table-of-contents">
@@ -16,12 +17,12 @@
 # A. Introduction<a id="sec-1" name="sec-1"></a>
 In multi-brand companies, there is often need to have **multiple brand experiences for all applications** . A different theme is required for each brand. For Example: A blue theme for Blue Brand and a green theme for Green Brand. Dynamic branding is ideal for multi-brand companies. You can create a single login page that determines which brand appears at run time. All brands are served from the same login page and integrated with single Identity Provider.
 
-Also, when you are designing the authentication experience for brand applications in your organization, you have to choose whether the user authentication flow will use **Universal/Central (More secured way of user authentication)** or **Application specific Embedded Login page (Less secured way of user authentication)**. Universal Login page provided by Identity provider is always a more secured way of user authentication. In case of a Universal Login page, when the users try to log in they are redirected to a central Login page hosted by Identity Provider, through which authentication is performed, and then they are redirected back to the protected application (e.g. Google Apps or Microsoft Office365 Apps).
+When you are designing the authentication experience for brand applications in your organization, you have to choose whether the user authentication flow will use **Universal/Central (More secured way of user authentication)** or **Application specific Embedded Login page (Less secured way of user authentication)**. Universal Login page provided by Identity provider is always a more secured way of user authentication. In case of a Universal Login page, when the users try to log in they are redirected to a central Login page hosted by Identity Provider, through which authentication is performed, and then they are redirected back to the protected application (e.g. Google Apps or Microsoft Office365 Apps). Each custom sign-in page is hosted on a custom domain URL e.g. login.<brand>.com.
 
-In our scenario, **MM Corporation** has a single user base to handle its two brands, **Blue brand** and **Green brand**. The corporation uses dynamic branding to customize the applications (including login experience) for each brand. When users click login link on each protected application, he/she will be presented with a login page based on the brand indicated in the login URL (dynamic branding). Login page is hosted on central location. User is authenticated against a single Identity Provider and redirected back to protected brand application after user authentication. Sign-in and Sign-out experiences are implemented via standardized sign-in protocols.
+In our scenario, **Franchise Org Corporation** has a single user base to handle its two brands (could be "n" brands), **Blue brand** and **Green brand**. The corporation uses dynamic branding to customize the applications (including login experience) for each brand. When users click login link on each protected application, he/she will be presented with a login page based on the brand indicated in the login URL (dynamic branding). Login page is hosted on central location. User is authenticated against a single Identity Provider and redirected back to protected brand application after user authentication. Sign-in and Sign-out experiences are implemented via standardized sign-in protocols.
 
-If you are also designing a solution for a multi-brand company then the solution provided in this GitHub repository is applicable to you. This solution applies if you have selected **Okta as an Identity Management System (Identity Provider)** for your organization.
-
+If you are designing a solution for a multi-brand company then the solution provided in this GitHub repository is applicable to you. This solution applies if you have selected **Okta as an Identity Management System (Identity Provider)** for your organization.
+ 
 ## Summary of Requirements:
 Here is summary of requirements for a multi-brand company login page:
 
@@ -47,12 +48,13 @@ Here is summary of requirements for a multi-brand company login page:
 	* Embedded login page is always less secured way of user authentication
 	* Does not follow standardized Sign-In protocols such as OpenID Connect, OAuth 2.0 and SAML 2.0
 	* Each application will have to create its own login page (more work and less consistent)
+	* Each application will have to create other related flows using Okta Authentication API e.g. Reset Password, Forgot Password, etc.
 	* Application developeres can easily access/store user's credentials from Login page (less secure)
 	* Single Sign-on is not possible for brand applications. 
 
 ## Features of Multiple Brand Login Page Solution Provided in this Repository
 1. **Multiple Branded Login Experiences with a Single Okta Org**: Login page supports multiple brands for a single okta org. For Example: Green brand and Blue brand.
-2. **Dynamic Branding for Multiple Brands**: Dynamic branding is very useful for multi-brand companies. You can create a single login page that determines which brand appears at run time (based on hostname or query string parameter). All brands are served from the same login page that uses single Okta org. We will create separate style sheet for each brand e.g. Blue Style and Green Style
+2. **Dynamic Branding for Multiple Brands**: Dynamic branding is very useful for multi-brand companies. You can create a single login page that determines which brand appears at run time. All brands are served from the same login page that uses single Okta org. We will create separate style sheet for each brand e.g. Blue Style and Green Style
 3. **Customizable Login Page**: Fully customizable Login page. For each brand, you can customize based on brand theme using brand style sheet and by using Okta Sign-In widget.  
 4. **Responsive Login Page Design**: Login Page is also built with “Responsive Design”, so Login Page renders well on a variety of devices and screen sizes. Responsive design allows Login page to adapt to the device users are viewing it on.
 5. **Applications interface with Login Page using Standardized Sign-In Protocols**: Login Page work with the following standardized Sign In protocols: OpenID Connect, OAuth 2.0 and SAML 2.0. By using standardized sign in protocols Applications are loosely coupled with the Identity Management System. Standard Sign-In protocols also issue security tokens (JWT and SAML2.0) that allow the application to call protected APIs. REST APIs are protected with OAuth2.0 and require JWT tokens to be passed.
@@ -91,6 +93,7 @@ software and services below:
 <br/>
 [<a href="#top">Back to Top</a>]
 <br/>
+
 # C. Build MVC Web Applications<a id="sec-3" name="sec-3"></a>
 
 The Visual Studio solution that you have downloaded contains three projects.
@@ -104,7 +107,7 @@ Open solution file in Visual Studio. You should be able to see three projects an
 	* It is a sample server-side Web application.
 	* It uses Microsoft.Owin Middleware for OpenID Connect protocol implementation.
 		<br/>
-		<img src="Documentation/Images/VS-002.png" alt="Visual Studio" /> 
+		<img src="Documentation/Images/VS-001A.png" alt="Visual Studio" /> 
 		<br/>
 	* User is authenticated via selected branded login page 
 	* Two brands are used in this sample: (a) Green Brand; and (b) Blue Brand  	
@@ -132,7 +135,7 @@ Open solution file in Visual Studio. You should be able to see three projects an
 		<br/> 
 	* Set **Okta.Clients.SAML2** project as StartUp project and run application and you will see "Okta Multi-Branded Login Pages" page.	
 		<br/>
-		<img src="Documentation/Images/VS-003B.png" alt="Visual Studio" width="800" /> 
+		<img src="Documentation/Images/VS-003B.png" alt="Visual Studio" width="800" />	
 		<br/>
 	*  <b>Note</b>: To test the complete user authentication flow via Okta org see <a href="#sec-5">Section E</a>
 		<br/>
@@ -142,7 +145,7 @@ Open solution file in Visual Studio. You should be able to see three projects an
 	* Two brands are used in this sample: (a) Green Brand; and (b) Blue Brand
 	* For each brand, there is a separate style sheet: (a) Style-Blue.css; and (b) Style-Green.css 
 	* It also supports multiple languages (System.Globalization)
-	* You can run this project locally (localhost) or publish this application on Microsoft Azure. There are several advantages on hosting on Azure including identifying brand based on hostname.    
+	* You can run this project locally (localhost) or publish this application on Microsoft Azure. There are several advantages on hosting on Azure including identifying brand based on hostname. Each custom sign-in page is hosted on a custom domain URL e.g. login.<brand>.com.   
 		<br/>
 		<img src="Documentation/Images/VS-004A.png" alt="Visual Studio" /> 
 		<br/> 
@@ -199,7 +202,7 @@ Okta allows you to create Identity Providers to manage federations with external
 	<img src="Documentation/Images/IdP-001.png" alt="Add Identity Provider"/>
 
 ### 2.1	Create Identity Provider for "Green Brand Login Page" ###
-This is for Green Brand. This will not be acted as true identity provider. This will not do traditional SAML 2.0 Request/Response (as SAML2 functionaliy is never used). Its only job to host login page, which contains the sign-in widget. 
+This is for Green Brand. This will not be act as a true identity provider. This will not do traditional SAML 2.0 Request/Response (as SAML2 functionaliy is never used). Its only job is to route the authentication request to the branded login page, which contains the Sign-in widget. 
  
 1. Click on **"Add Identity Provider"** button
 2. Select “Add SAML 2.0 IdP”
@@ -215,7 +218,7 @@ This is for Green Brand. This will not be acted as true identity provider. This 
 	* SAML Protocol Settings:
 	* IdP Issuer URI: Provide URL for Green branded Login Page. 
 		For Example: https://demo.login.greenbrand.com
-	* IdP Single Sign-on URI: Provide URL for Green brand Login Page URL.
+	* **IdP Single Sign-on URI: Provide URL for Green brand Login Page URL**.
 		This is the URL where login page application is hosted. Unauthenticated user will be redirected there. 
 		For Example: https://demo.login.greenbrand.com
 	* Request Binding: HTTP POST
@@ -229,7 +232,7 @@ This is for Green Brand. This will not be acted as true identity provider. This 
 	<br/>
 	<img src="Documentation/Images/IdP-005A.png" alt="Add Identity Provider"/>
 	<br/>
-	* Note: The last part of Assertion Consumer Service (ACS) URL provides **idp** value. This value be will be sent as **idp** query string parameter value to pick green branded login page.
+	* Note: The last highlighted part of Assertion Consumer Service (ACS) URL provides **idp** value. This value be will be sent as **idp** query string parameter value in the authentication request to route to the green branded login page.
 
 ### 2.2	Create Identity Provider for "Blue Brand Login Page" ###
 This is for Blue Brand. This will not be acted as true identity provider. This will not do traditional SAML 2.0 Request/Response (as SAML2 functionaliy is never used). Its only job to host login page, which contains the sign-in widget. 
@@ -246,7 +249,7 @@ This is for Blue Brand. This will not be acted as true identity provider. This w
 	* SAML Protocol Settings:
 	* IdP Issuer URI: Provide URL for Blue branded Login Page.
 		For Example: https://demo.login.bluebrand.com
-	* IdP Single Sign-on URI: Provide URL for Blue brand Login Page URL. 
+	* **IdP Single Sign-on URI: Provide URL for Blue brand Login Page URL.** 
 		This is the URL where login page application is hosted. Unauthenticated user will be redirected there. 
 		For Example: https://demo.login.bluebrand.com
 	* Request Binding: HTTP POST
@@ -261,7 +264,7 @@ This is for Blue Brand. This will not be acted as true identity provider. This w
 	<br/>
 	<img src="Documentation/Images/IdP-008.png" alt="Add Identity Provider"/>
 	<br/>
-	* Note: The last highlighted part of Assertion Consumer Service (ACS) URL provides **idp** value. This value be will be sent as **idp** query string parameter value to pick green branded login page.
+	* Note: The last highlighted part of Assertion Consumer Service (ACS) URL provides **idp** value. This value be will be sent as **idp** query string parameter value in the authentication request to route to the blue branded login page.
 
 ## Step 3. Enabling CORS (Trusted Origins) ##
 In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your websites to make an XHR to the Okta API with the Okta session cookie. Every website origin must be explicitly permitted via the administrator UI for CORS. You have to enable CORS for the Branded Login pages.
@@ -275,7 +278,7 @@ In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your w
 	* Type: CORS [Checked] Redirect [Unchecked]
 - Click on **Save** button
 	<br/>
-	<img src="Documentation/Images/Cors-001.png" alt="Add CORS"/>
+	<img src="Documentation/Images/Cors-001A.png" alt="Add CORS"/>
 	<br/>
 ### 3.2 Add CORS for Blue Brand Login Page ###
 - Click on **Add Origin**
@@ -284,12 +287,12 @@ In Okta, CORS (Cross-Origin Resource Sharing) allows JavaScript hosted on your w
 	* Type: CORS [Checked] Redirect [Unchecked]
 - Click on **Save** button
 	<br/>
-	<img src="Documentation/Images/Cors-002.png" alt="Add CORS"/>
+	<img src="Documentation/Images/Cors-002A.png" alt="Add CORS"/>
 	<br/>
-	Now, you should have **two CORS** in the list of Origins
+- Now, you should have **two CORS** in the list of Origins
 	<br/>
-	<img src="Documentation/Images/Cors-003.png" alt="Add CORS"/>
-	<br/>
+	<img src="Documentation/Images/Cors-003A.png" alt="Add CORS"/>
+	<br/>	
 
 ## Step 4. Create Test User Accounts for Each Brand (Add Person) ##
 Now, we will add two test accounts in Okta. Use the People page to add test users.
@@ -587,11 +590,11 @@ For SAML branded application, we will have to create separate configuration for 
 	<br/>
 - Configure Login Page URL: Provide Login Page URL for Green Brand SAML Application. This link will include: 
 
-	* **client_id**: It is the Client ID for Proxy OpenID Connect App. 
-	* **redirect_uri** : It is the endpoint for SAML2 application that will issue Sign-in request.This URL must be defined as valid URL in Proxy app. 
-	* **idp**: It is the value for green branded login page (IdP).
-    * **Authorize Endpoint**: First part is authorize end point of custom authorization server e.g. https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize
-
+	* **Authorize Endpoint**: Login page URL is the authorize endpoint of the custom Okta authorization server e.g. https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize
+	* **client_id**: It is the Client ID for **SAML2 Custom Login Page OIDC Client**. 
+	* **redirect_uri** : It is the endpoint for SAML2 application that will issue Sign-in request. This URL must be defined as on of the valid **Login redirect URIs** in the Proxy app. 
+	* **idp**: It is Identity Provider Assertion Consumer Service URL idp value    
+	* For other query string parameter, see image below:
     <br/>
 	<img src="Documentation/Images/App-024A.png" alt="Add Application"/>
 	<br/>
@@ -683,10 +686,11 @@ For SAML branded application, we will have to create separate configuration for 
 	<img src="Documentation/Images/App-023.png" alt="Add Application"/>
 	<br/>
 - Configure Login Page URL: Provide Login Page URL for Blue Brand SAML Application. This link will include:
-	* **client_id**: It is the Client ID for Proxy OpenID Connect App. 
-	* **redirect_uri** : It is the endpoint for SAML2 application that will issue Sign-in request.This URL must be defined as valid URL in Proxy app. 
-	* **idp**: It is the value for green branded login page (IdP).
-    * **Authorize Endpoint**: First part is authorize end point of custom authorization server e.g. https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize
+	* **Authorize Endpoint**: Login page URL is the authorize endpoint of the custom Okta authorization server e.g. https://dev-217355.oktapreview.com/oauth2/auseqf1tfe6bvmQpP0h7/v1/authorize
+	* **client_id**: It is the Client ID for **SAML2 Custom Login Page OIDC Client**. 
+	* **redirect_uri** : It is the endpoint for SAML2 application that will issue Sign-in request. This URL must be defined as on of the valid **Login redirect URIs** in the Proxy app. 
+	* **idp**: It is Identity Provider Assertion Consumer Service URL idp value
+	* For other query string parameter, see image below:    
 	<br/>
 	<br/>
 	<img src="Documentation/Images/App-028A.png" alt="Add Application"/>
@@ -800,6 +804,7 @@ Now, we will update/review configuration settings for each project based on our 
 
 1. **OktaLogin**: First we will update configuration settings for OktaLogin project and run it locally or publish on Microsoft Azure.
 
+	* **Note:** The key take away is that Relay state that is posted to the Login page will be returned in the response as the redirect URL. After authentication, the Okta session cookie is set there by allowing single sign-on between applications. 
 	* Update **appSettings** section in **Web.config**
 		* ida:Authority: Provide Okta's Preview Sandbox e.g. e.g. https://dev-######.oktapreview.com
 		<br/>
@@ -821,12 +826,17 @@ Now, we will update/review configuration settings for each project based on our 
 		<br/>
 		<img src="Documentation/Images/E-Login-003.png" alt="Add Application"/>
 		<br/>
+	* [optional] ** Custom Domains configuration in Microsoft Azure**
+		* You can configure custom domains for login page application in Microsoft Azure
+		<br/>
+		<img src="Documentation/Images/customdomain.png" alt="Add Application"/>
+		<br/> 
 	* <b>Note</b>:This application must be running (either in Azure or locally) before you test OpenID Client or SAML 2.0 Client
 	<br/>
 
 2. **Okta.Clients.OpenIdConnect**: Lets update/review configuration settings for OpenID Connect client application.
 	* Update **appSettings** section in **Web.config**
-		* ida:Authority: Provide OKta's Preview Sandbox environment e.g. https://dev-######.oktapreview.com
+		* ida:Authority: Provide Okta's Preview Sandbox environment e.g. https://dev-######.oktapreview.com
 		* ida:AuthorizationServer: Provide Custom Authorization server e.g. https://dev-######.oktapreview.com/oauth2/auseqf1tfe6bvxxxxxxx
 		* ida:ClientId: Provide Client ID for this application
 		* ida:ClientSecret: Provide Client secret for this application
@@ -849,7 +859,19 @@ Now, we will update/review configuration settings for each project based on our 
 		 <img src="Documentation/Images/E-002.png" alt="Add Application"/>
 		 <br/>
 	* Make sure OktaLogin project is running
-	* Run OpenID Connect client application 
+	* Run OpenID Connect client application for Okta Brand
+	* Run OpenID Connect client application for Blue Brand
+		* Start application
+			<br/>
+		 	<img src="Documentation/Images/Oidc-Blue-001.png" alt="Oidc"/>
+		 	<br/>
+		* Select Blue brand and click Sign-In button. You will see login page for blue brand.
+			<br/>
+		 	<img src="Documentation/Images/Oidc-Blue-002.png" alt="Oidc"/>
+		 	<br/>
+		* Enter credentials for test account e.g. john.doe@bluebrand.com and login. You will see user profile page.
+		* Sign-out
+	* Run OpenID Connect client application for Green Brand
 
 3. **Okta.Clients.SAML2**: 
 TODO - Run and Test Web Applications
