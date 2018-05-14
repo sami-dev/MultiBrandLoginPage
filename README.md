@@ -933,7 +933,7 @@ Now, we will update/review configuration settings for each project based on our 
 			<br/>
 		 	<img src="Documentation/Images/SAML2-Okta-001.png" alt="Oidc"/>
 		 	<br/>
-		* Select Blue brand and click Sign-In button. You will see login page for blue brand.
+		* Select Okta brand and click Sign-In button. You will see login page for default Okta brand.
 			<br/>
 		 	<img src="Documentation/Images/SAML2-Okta-002.png" alt="Oidc"/>
 		 	<br/>
@@ -961,7 +961,7 @@ Now, we will update/review configuration settings for each project based on our 
 			<br/>
 		 	<img src="Documentation/Images/SAML2-Green-001.png" alt="Oidc"/>
 		 	<br/>
-		* Select Blue brand and click Sign-In button. You will see login page for green brand.
+		* Select Green brand and click Sign-In button. You will see login page for green brand.
 			<br/>
 		 	<img src="Documentation/Images/Login-Green.png" alt="Oidc"/>
 		 	<br/>
