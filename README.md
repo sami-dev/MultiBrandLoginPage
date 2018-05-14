@@ -831,7 +831,7 @@ Now, we will update/review configuration settings for each project based on our 
 		<br/>
 		<img src="Documentation/Images/customdomain.png" alt="Add Application"/>
 		<br/> 
-	* <b>Note</b>:This application must be running (either in Azure or locally) before you test OpenID Client or SAML 2.0 Client
+	* <b>Note</b>:This application must be running (either in Azure or locally) before you test OpenID Client application or SAML 2.0 Client application
 	<br/>
 
 2. **Okta.Clients.OpenIdConnect**: Lets update/review configuration settings for OpenID Connect client application.
@@ -864,7 +864,7 @@ Now, we will update/review configuration settings for each project based on our 
 			<br/>
 		 	<img src="Documentation/Images/Oidc-Okta-001.png" alt="Oidc"/>
 		 	<br/>
-		* Select Blue brand and click Sign-In button. You will see login page for blue brand.
+		* Select Blue brand and click Sign-In button. You will see login page for Okta brand (default login).
 			<br/>
 		 	<img src="Documentation/Images/Oidc-Okta-002.png" alt="Oidc"/>
 		 	<br/>
@@ -957,7 +957,7 @@ Now, we will update/review configuration settings for each project based on our 
 			<br/>
 		 	<img src="Documentation/Images/SAML2-Green-001.png" alt="Oidc"/>
 		 	<br/>
-		* Select Blue brand and click Sign-In button. You will see login page for blue brand.
+		* Select Blue brand and click Sign-In button. You will see login page for green brand.
 			<br/>
 		 	<img src="Documentation/Images/Login-Green.png" alt="Oidc"/>
 		 	<br/>
