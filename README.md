@@ -864,7 +864,7 @@ Now, we will update/review configuration settings for each project based on our 
 			<br/>
 		 	<img src="Documentation/Images/Oidc-Okta-001.png" alt="Oidc"/>
 		 	<br/>
-		* Select Blue brand and click Sign-In button. You will see login page for Okta brand (default login).
+		* Select Okta brand and click Sign-In button. You will see login page for Okta brand (default login).
 			<br/>
 		 	<img src="Documentation/Images/Oidc-Okta-002.png" alt="Oidc"/>
 		 	<br/>
@@ -917,6 +917,10 @@ Now, we will update/review configuration settings for each project based on our 
 		<br/>
 		<br/>
 		<img src="Documentation/Images/SAML-003.png" alt="SAML Identity Provider"/>
+		<br/>
+		Get SAML configuration information from Okta (SAML2 Web App --> Sign On)
+		<br/>
+		<img src="Documentation/Images/SAML-013.png" alt="SAML Identity Provider"/>
 		<br/>
 	* Review SAML2 Notification handler defined in **Startup.Auth.cs** under **App_Start**
 		 * Review SAML2 Notfication handler. We have to switch IdP value based on selected brand. 
